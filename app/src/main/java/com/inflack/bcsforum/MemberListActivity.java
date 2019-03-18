@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -97,6 +98,14 @@ public class MemberListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                memberDTOS.clear();
+                for (int i = 0; i < memberDTOSCopy.size(); i++) {
+                    Log.d("TAG", "dfdsf");
+                    if (memberDTOSCopy.get(i).getName().toLowerCase().contains(s.toLowerCase())) {
+                        memberDTOS.add(memberDTOSCopy.get(i));
+                    }
+                }
+                memberListAdapter.notifyDataSetChanged();
                 return false;
             }
         });
