@@ -42,8 +42,8 @@ public class MemberListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
         MainHolder mainHolder = (MainHolder) viewHolder;
-//        int res = context.getResources().getIdentifier(context.getPackageName() + ":drawable/" + list.get(position), null, null);
-//        mainHolder.img_avatar.setImageResource(res);
+        int res = context.getResources().getIdentifier(context.getPackageName() + ":drawable/" + memberDTOS.get(position).getImgUrl(), null, null);
+        mainHolder.img_profile.setImageResource(res);
         mainHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

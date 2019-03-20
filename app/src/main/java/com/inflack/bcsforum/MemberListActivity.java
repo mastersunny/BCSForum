@@ -56,6 +56,11 @@ public class MemberListActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             MemberDTO memberDTO = new MemberDTO();
             memberDTO.setName("Name");
+            if (i % 2 == 0) {
+                memberDTO.setImgUrl("abdul");
+            } else {
+                memberDTO.setImgUrl("abida");
+            }
             memberDTO.setId(12121212);
 
             memberDTOS.add(memberDTO);
@@ -76,6 +81,7 @@ public class MemberListActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(int position) {
                 Intent intent = new Intent(MemberListActivity.this, MemberProfileActivity.class);
+                intent.putExtra("MEMBER", memberDTOS.get(position));
                 startActivity(intent);
             }
         });

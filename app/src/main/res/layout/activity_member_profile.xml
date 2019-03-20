@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222642">
+    android:background="@color/bg_color">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -168,7 +168,7 @@
     </android.support.v7.widget.CardView>
 
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/img_profile"
         android:layout_width="140dp"
         android:layout_height="140dp"

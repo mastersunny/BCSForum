@@ -7,6 +7,15 @@ public class MemberDTO implements Serializable {
     private int id;
     private String name;
     private String idNo;
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public int getId() {
         return id;
@@ -38,6 +47,7 @@ public class MemberDTO implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", idNo='" + idNo + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 '}';
     }
 }
