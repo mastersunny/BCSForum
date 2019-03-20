@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 ////        navigationView = (NavigationView) findViewById(R.id.nav_view);
 ////        navigationView.setNavigationItemSelectedListener(this);
 ////
-////        initLayout();
+        initLayout();
     }
 
     @Override
@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
-    //    private void initLayout() {
-//        getSupportActionBar().setDisplayShowTitleEnabled(true);
-//        getSupportActionBar().setTitle("Home");
-//
+        private void initLayout() {
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("২২ তম বিসিএস ফোরাম");
+
 //        View view = navigationView.getHeaderView(0);
 //        view.findViewById(R.id.img_close_drawer).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-//    }
+    }
 
     @Override
     public void onBackPressed() {

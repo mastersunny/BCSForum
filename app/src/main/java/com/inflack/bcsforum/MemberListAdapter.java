@@ -41,9 +41,13 @@ public class MemberListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
+        MemberDTO memberDTO = memberDTOS.get(position);
         MainHolder mainHolder = (MainHolder) viewHolder;
         int res = context.getResources().getIdentifier(context.getPackageName() + ":drawable/" + memberDTOS.get(position).getImgUrl(), null, null);
         mainHolder.img_profile.setImageResource(res);
+
+        mainHolder.tv_name.setText(memberDTO.getName());
+        mainHolder.tv_id_no.setText("পরিচিতি নম্বরঃ "+ memberDTOS.get(position).getIdNo());
         mainHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

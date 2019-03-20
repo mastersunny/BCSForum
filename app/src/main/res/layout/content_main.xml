@@ -54,7 +54,7 @@
             android:paddingBottom="16dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="START | lunch 20.00 | Dinner 60.00 | Travel 60.00 | Doctor 5000.00 | lunch 20.00 | Dinner 60.00 | Travel 60.00 | Doctor 5000.00 | END"
+            android:text="আমার সোনার বাংলা, আমি তোমায় ভালবাসি| চিরদিন তোমার আকাশ, তোমার বাতাস, আমার প্রাণে বাজায় বাঁশি।"
             android:textColor="@android:color/white" />
 
     </RelativeLayout>

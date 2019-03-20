@@ -41,6 +41,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -52,30 +53,33 @@
             android:id="@+id/img_profile"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            app:srcCompat="@drawable/ic_user" />
+            app:srcCompat="@drawable/abdul" />
 
         <TextView
+            android:textSize="16sp"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="sadfdsfdsfsadf"
+            android:text="মোহাম্মদ আব্দুল হাই, পি এ এ"
             android:textColor="@android:color/white" />
 
         <TextView
+            android:textSize="12sp"
             android:id="@+id/tv_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="sadfdsfdsfsadf"
+            android:text="প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)"
             android:textColor="@android:color/white" />
 
         <TextView
+            android:textSize="12sp"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="sadfdsfdsfsadf"
+            android:text="স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
