@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,10 +22,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.inflack.bcsforum.model.NotificatonActivity;
+
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
+    public String TAG = "MainActivity";
     Toolbar toolbar;
 
 //    NavigationView navigationView;
@@ -35,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MemberListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.img_notification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NotificatonActivity.class);
                 startActivity(intent);
             }
         });
@@ -125,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
-        private void initLayout() {
+    private void initLayout() {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("২২ তম বিসিএস ফোরাম");
+        getSupportActionBar().setTitle("২২ তম বিসিএস (এডমিন) ফোরাম");
 
 //        View view = navigationView.getHeaderView(0);
 //        view.findViewById(R.id.img_close_drawer).setOnClickListener(new View.OnClickListener() {
@@ -170,5 +185,11 @@ public class MainActivity extends AppCompatActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    @OnClick({R.id.show_dialog_layout})
+    public void onClick(View v) {
+        CustomDialog customDialog = new CustomDialog(MainActivity.this);
+        customDialog.show();
+    }
 
 }
