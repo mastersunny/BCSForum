@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 
+import com.facebook.accountkit.AccessToken;
+import com.facebook.accountkit.AccountKit;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,6 +25,8 @@ public class SplashActivity extends AppCompatActivity {
     private ObjectAnimator animation;
 
     private Handler handler = new Handler();
+
+    AccessToken accessToken = AccountKit.getCurrentAccessToken();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +56,16 @@ public class SplashActivity extends AppCompatActivity {
     Runnable splashRunnable = new Runnable() {
         @Override
         public void run() {
-            Intent intent = new Intent(SplashActivity.this, SplashActivity2.class);
-            startActivity(intent);
-            finish();
+            if (accessToken != null) {
+                //Handle Returning User
+                goToMyLoggedInActivity();
+            } else {
+                Intent intent = new Intent(SplashActivity.this, SplashActivity2.class);
+                startActivity(intent);
+                finish();
+            }
+
+
         }
     };
 
@@ -68,5 +80,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onDestroy();
         handler.removeCallbacksAndMessages(splashRunnable);
         cancelAnimation();
+    }
+
+    private void goToMyLoggedInActivity() {
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.accountkit.AccessToken;
+import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
@@ -16,6 +18,7 @@ import butterknife.OnClick;
 
 public class SplashActivity2 extends AppCompatActivity {
 
+    AccessToken accessToken = AccountKit.getCurrentAccessToken();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,10 @@ public class SplashActivity2 extends AppCompatActivity {
 
     @OnClick({R.id.btn_login})
     public void onClick(View v) {
+
+        //Handle new or logged out user
         phoneLogin();
+
     }
 
     public static int APP_REQUEST_CODE = 99;
@@ -37,7 +43,7 @@ public class SplashActivity2 extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.CODE); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,

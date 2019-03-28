@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BaseActivity"></activity>
+
         <meta-data
             android:name="com.facebook.accountkit.ApplicationName"
             android:value="@string/app_name" />
@@ -47,7 +49,9 @@
             android:name=".SplashActivity2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

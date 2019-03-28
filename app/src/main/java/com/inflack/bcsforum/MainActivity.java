@@ -190,10 +190,19 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @OnClick({R.id.show_dialog_layout})
+    @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile})
     public void onClick(View v) {
-        CustomDialog customDialog = new CustomDialog(MainActivity.this);
-        customDialog.show();
+        switch (v.getId()) {
+            case R.id.show_dialog_layout:
+                CustomDialog customDialog = new CustomDialog(MainActivity.this);
+                customDialog.show();
+                break;
+            case R.id.img_edit_profile:
+                Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 
 }
