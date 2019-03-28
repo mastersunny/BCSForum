@@ -1,30 +1,44 @@
 package com.inflack.bcsforum.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class MemberDTO implements Serializable {
 
     private int id;
+    @SerializedName("name")
     private String name;
-    private String position;
-    private String employment;
+    @SerializedName("designation")
+    private String designation;
+    @SerializedName("company")
+    private String company;
+    @SerializedName("id_no")
     private String idNo;
+    @SerializedName("current_workplace")
     private String currentEmployment;
+    @SerializedName("previous_workplace")
     private String previousEmployment;
+    @SerializedName("birth_district")
     private String district;
+    @SerializedName("dob")
     private String dateOfBirth;
+    @SerializedName("cell_no")
     private String phoneNo;
+    @SerializedName("email")
     private String email;
+    @SerializedName("blood_group")
     private String bloodGroup;
+    @SerializedName("profile_picture")
     private String imgUrl;
 
     public MemberDTO() {
     }
 
-    public MemberDTO(String name, String position, String employment, String idNo, String currentEmployment, String previousEmployment, String district, String dateOfBirth, String phoneNo, String email, String bloodGroup, String imgUrl) {
+    public MemberDTO(String name, String designation, String company, String idNo, String currentEmployment, String previousEmployment, String district, String dateOfBirth, String phoneNo, String email, String bloodGroup, String imgUrl) {
         this.name = name;
-        this.position = position;
-        this.employment = employment;
+        this.designation = designation;
+        this.company = company;
         this.idNo = idNo;
         this.currentEmployment = currentEmployment;
         this.previousEmployment = previousEmployment;
@@ -36,20 +50,20 @@ public class MemberDTO implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public String getPosition() {
-        return position;
+    public String getDesignation() {
+        return designation;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 
-    public String getEmployment() {
-        return employment;
+    public String getCompany() {
+        return company;
     }
 
-    public void setEmployment(String employment) {
-        this.employment = employment;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getCurrentEmployment() {
@@ -145,7 +159,16 @@ public class MemberDTO implements Serializable {
         return "MemberDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", designation='" + designation + '\'' +
+                ", company='" + company + '\'' +
                 ", idNo='" + idNo + '\'' +
+                ", currentEmployment='" + currentEmployment + '\'' +
+                ", previousEmployment='" + previousEmployment + '\'' +
+                ", district='" + district + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", email='" + email + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
                 '}';
     }

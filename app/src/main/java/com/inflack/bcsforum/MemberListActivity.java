@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.SearchView;
 
 import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.rest.ApiClient;
+import com.inflack.bcsforum.rest.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MemberListActivity extends AppCompatActivity {
+
+    private String TAG = "MemberListActivity";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -36,33 +43,57 @@ public class MemberListActivity extends AppCompatActivity {
     List<MemberDTO> memberDTOS = new ArrayList<>();
     List<MemberDTO> memberDTOSCopy = new ArrayList<>();
 
+    private ApiInterface apiInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_list);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
         initLayout();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        getData();
+        if (memberDTOS.size() <= 0) {
+            getData();
+        }
     }
 
     private void getData() {
         memberDTOS.clear();
         memberDTOSCopy.clear();
+        apiInterface.getMembers().enqueue(new Callback<List<MemberDTO>>() {
+            @Override
+            public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
+                Log.d(TAG, response + "");
+                if (response != null && response.isSuccessful()) {
+                    memberDTOS.addAll(response.body());
+                    memberDTOSCopy.addAll(memberDTOS);
+                    if (memberListAdapter != null) {
+                        memberListAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
 
-        memberDTOS.add(new MemberDTO("মোহাম্মদ আব্দুল হাই","প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)","স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট", "১৫৪১৫","তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ","নির্বাচন কমিশন, বাংলাদেশ","ফেনী","০১ জুলাই, ১৯৭৬","+৮৮০১৯২১৬৯১৮৭৮","hye22bcs@gmail.com","B+", "abdul"));
-        memberDTOS.add(new MemberDTO("মোহাাম্মদ মমিনুর রহমান", "পরিচালক (উপ-সচিব)","প্রধানমন্ত্রীর কার্যালয়","১৫২০২","প্রধানমন্ত্রীর কার্যালয় ","","ময়মনসিংহ","০১ সেপ্টেম্বর, ১৯৭৩", "+৮৮০১৭১১২৬৯৮৬১","ominur15202@yahoo.com","A+","abdul"));
-        memberDTOS.add(new MemberDTO("আ ফ ম ফজলে রাব্বী","প্রথম সচিব, বাংলাদেশ হাই কমিশন", "বাংলাদেশ হাই কমিশন","১৫২০৩","যুক্তরাজ্য","","লক্ষ্মীপুর","০৪ আগষ্ট, ১৯৭২","+৪৪৭৪৫৯৫৪৫১৭৭","rabbi15203@gmail.com","B+", "abdul"));
-        memberDTOS.add(new MemberDTO("কাজী নিশাত রসুল","মাননীয় প্রধানমন্ত্রীর সহকারী একান্ত সচিব (উপ-সচিব)","প্রধানমন্ত্রীর কার্যালয়", "১৫৩২৫", "প্রধানমন্ত্রীর কার্যালয়","","নোয়াখালী","০১ জানুয়ারী","+৮৮০১৭০৮১৩৩২১২","nishat15325@gmail.com","B+", "abida"));
-        memberDTOS.add(new MemberDTO("ড. আশরাফুল আলম","উপ-সচিব","মন্ত্রীপরিষদ বিভাগ ", "১৫২০৪","মন্ত্রীপরিষদ বিভাগ","","কিশোরগঞ্জ","০১ জানুয়ারী, ১৯৭৫","+৮৮০১৭১১০৩০৩৯১১","ashraful851@gmail.com","B+", "abdul"));
+            @Override
+            public void onFailure(Call<List<MemberDTO>> call, Throwable t) {
+                Log.d(TAG, t.getMessage());
+            }
+        });
 
-        memberDTOSCopy.addAll(memberDTOS);
+
+//        memberDTOS.add(new MemberDTO("মোহাম্মদ আব্দুল হাই","প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)","স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট", "১৫৪১৫","তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ","নির্বাচন কমিশন, বাংলাদেশ","ফেনী","০১ জুলাই, ১৯৭৬","+৮৮০১৯২১৬৯১৮৭৮","hye22bcs@gmail.com","B+", "abdul"));
+//        memberDTOS.add(new MemberDTO("মোহাাম্মদ মমিনুর রহমান", "পরিচালক (উপ-সচিব)","প্রধানমন্ত্রীর কার্যালয়","১৫২০২","প্রধানমন্ত্রীর কার্যালয় ","","ময়মনসিংহ","০১ সেপ্টেম্বর, ১৯৭৩", "+৮৮০১৭১১২৬৯৮৬১","ominur15202@yahoo.com","A+","abdul"));
+//        memberDTOS.add(new MemberDTO("আ ফ ম ফজলে রাব্বী","প্রথম সচিব, বাংলাদেশ হাই কমিশন", "বাংলাদেশ হাই কমিশন","১৫২০৩","যুক্তরাজ্য","","লক্ষ্মীপুর","০৪ আগষ্ট, ১৯৭২","+৪৪৭৪৫৯৫৪৫১৭৭","rabbi15203@gmail.com","B+", "abdul"));
+//        memberDTOS.add(new MemberDTO("কাজী নিশাত রসুল","মাননীয় প্রধানমন্ত্রীর সহকারী একান্ত সচিব (উপ-সচিব)","প্রধানমন্ত্রীর কার্যালয়", "১৫৩২৫", "প্রধানমন্ত্রীর কার্যালয়","","নোয়াখালী","০১ জানুয়ারী","+৮৮০১৭০৮১৩৩২১২","nishat15325@gmail.com","B+", "abida"));
+//        memberDTOS.add(new MemberDTO("ড. আশরাফুল আলম","উপ-সচিব","মন্ত্রীপরিষদ বিভাগ ", "১৫২০৪","মন্ত্রীপরিষদ বিভাগ","","কিশোরগঞ্জ","০১ জানুয়ারী, ১৯৭৫","+৮৮০১৭১১০৩০৩৯১১","ashraful851@gmail.com","B+", "abdul"));
+
+//        memberDTOSCopy.addAll(memberDTOS);
 
 
 //        for (int i = 0; i < 20; i++) {
@@ -79,12 +110,19 @@ public class MemberListActivity extends AppCompatActivity {
 //            memberDTOSCopy.add(memberDTO);
 //        }
 
-        if (memberListAdapter != null) {
-            memberListAdapter.notifyDataSetChanged();
-        }
+//        if (memberListAdapter != null) {
+//            memberListAdapter.notifyDataSetChanged();
+//        }
     }
 
     private void initLayout() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("সদস্যগনের নামের তালিকা");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
         memberListAdapter = new MemberListAdapter(this, memberDTOS);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -132,12 +170,9 @@ public class MemberListActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @OnClick({R.id.img_back})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.img_back:
-                finish();
-                break;
-        }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

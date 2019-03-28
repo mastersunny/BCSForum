@@ -19,29 +19,12 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextColor="#ffffff">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/img_messenger"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/img_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_arrow" />
-
-                <ImageView
-                    android:id="@+id/img_messenger"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_notification" />
-
-            </RelativeLayout>
+                android:src="@drawable/ic_notification" />
 
         </android.support.v7.widget.Toolbar>
 

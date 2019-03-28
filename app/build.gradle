@@ -34,4 +34,7 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:3.2.0'
 
     implementation 'com.ornach.nobobutton:nobobutton:1.6'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
