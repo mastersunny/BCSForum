@@ -9,8 +9,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 //    NavigationView navigationView;
 
     DrawerLayout drawer;
+
+    @BindView(R.id.show_dialog_layout)
+    FrameLayout show_dialog_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +62,19 @@ public class MainActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                show_dialog_layout.setClickable(false);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                show_dialog_layout.setClickable(true);
+            }
+        };
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
