@@ -47,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
             case R.id.btn_logout:
                 AccountKit.logOut();
                 Intent intent = new Intent(EditProfileActivity.this, SplashActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();
                 break;
             case R.id.img_choose_photo:
