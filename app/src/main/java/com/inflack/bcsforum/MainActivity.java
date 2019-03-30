@@ -198,6 +198,9 @@ public class MainActivity extends AppCompatActivity {
                 customDialog.show();
                 break;
             case R.id.img_edit_profile:
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
                 Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
                 startActivity(intent);
                 break;
