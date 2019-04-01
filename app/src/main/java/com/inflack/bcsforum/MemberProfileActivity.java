@@ -84,6 +84,13 @@ public class MemberProfileActivity extends AppCompatActivity {
         tv_blood_group.setText("রক্তের গ্রুপঃ " + memberDTO.getBloodGroup());
 
 
+        findViewById(R.id.img_notification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.startNotificationActivity(MemberProfileActivity.this);
+            }
+        });
+
     }
 
     private void initLayout() {

@@ -136,6 +136,13 @@ public class MemberListActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.img_notification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.startNotificationActivity(MemberListActivity.this);
+            }
+        });
+
     }
 
     @Override

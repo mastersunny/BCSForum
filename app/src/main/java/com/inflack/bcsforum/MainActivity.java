@@ -87,14 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.img_notification).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NotificatonActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
 //        String[] numbers = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 //        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(this, R.layout.list_item, numbers);
@@ -203,6 +195,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.img_notification:
+                Utils.startNotificationActivity(MainActivity.this);
                 break;
         }
 
