@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile})
+    @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile, R.id.img_notification})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.show_dialog_layout:

@@ -41,7 +41,7 @@ public class EditProfileActivity extends AppCompatActivity {
         return true;
     }
 
-    @OnClick({R.id.btn_logout})
+    @OnClick({R.id.btn_logout, R.id.img_notification})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_logout:
@@ -52,6 +52,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.img_choose_photo:
+                break;
+            case R.id.img_notification:
+                Utils.startNotificationActivity(EditProfileActivity.this);
                 break;
         }
     }
