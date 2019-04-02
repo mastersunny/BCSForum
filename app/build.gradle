@@ -39,4 +39,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
     implementation 'com.facebook.android:account-kit-sdk:4.+'
+    implementation 'com.ornach.bitpermission:bit-permission:1.1'
+    implementation 'com.github.GrenderG:Toasty:1.4.1'
 }
