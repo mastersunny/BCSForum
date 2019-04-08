@@ -43,7 +43,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
         MemberDTO memberDTO = memberDTOS.get(position);
 //        MainHolder mainHolder = (MainHolder) viewHolder;
-//        int res = context.getResources().getIdentifier(context.getPackageName() + ":drawable/" + memberDTOS.get(position).getImgUrl(), null, null);
+//        int res = context.getResources().getIdentifier(context.getPackageName() + ":drawable/" + memberDTOS.get(position).getProfilePicture(), null, null);
 //        mainHolder.img_profile.setImageResource(res);
 //
 //        mainHolder.tv_name.setText(memberDTO.getName());

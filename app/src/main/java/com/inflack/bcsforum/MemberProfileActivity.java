@@ -6,7 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.rest.ApiClient;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import butterknife.BindView;
@@ -100,8 +102,13 @@ public class MemberProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//        int res = getResources().getIdentifier(getPackageName() + ":drawable/" + memberDTO.getImgUrl(), null, null);
+//        int res = getResources().getIdentifier(getPackageName() + ":drawable/" + memberDTO.getProfilePicture(), null, null);
 //        img_profile.setImageResource(res);
+        if (memberDTO.getProfilePicture() != null) {
+            Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture())
+                    .into(img_profile);
+//            mainHolder.room_image.setImageResource(res);
+        }
     }
 
     @Override

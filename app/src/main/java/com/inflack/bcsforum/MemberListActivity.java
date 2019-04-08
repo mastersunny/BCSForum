@@ -108,9 +108,9 @@ public class MemberListActivity extends AppCompatActivity {
 //            MemberDTO memberDTO = new MemberDTO();
 //            memberDTO.setName("Name");
 //            if (i % 2 == 0) {
-//                memberDTO.setImgUrl("abdul");
+//                memberDTO.setProfilePicture("abdul");
 //            } else {
-//                memberDTO.setImgUrl("abida");
+//                memberDTO.setProfilePicture("abida");
 //            }
 //            memberDTO.setId(12121212);
 //

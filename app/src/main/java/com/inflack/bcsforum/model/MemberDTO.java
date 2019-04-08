@@ -30,12 +30,12 @@ public class MemberDTO implements Serializable {
     @SerializedName("blood_group")
     private String bloodGroup;
     @SerializedName("profile_picture")
-    private String imgUrl;
+    private String profilePicture;
 
     public MemberDTO() {
     }
 
-    public MemberDTO(String name, String designation, String company, String idNo, String currentEmployment, String previousEmployment, String district, String dateOfBirth, String phoneNo, String email, String bloodGroup, String imgUrl) {
+    public MemberDTO(String name, String designation, String company, String idNo, String currentEmployment, String previousEmployment, String district, String dateOfBirth, String phoneNo, String email, String bloodGroup, String profilePicture) {
         this.name = name;
         this.designation = designation;
         this.company = company;
@@ -47,7 +47,7 @@ public class MemberDTO implements Serializable {
         this.phoneNo = phoneNo;
         this.email = email;
         this.bloodGroup = bloodGroup;
-        this.imgUrl = imgUrl;
+        this.profilePicture = profilePicture;
     }
 
     public String getDesignation() {
@@ -122,12 +122,12 @@ public class MemberDTO implements Serializable {
         this.bloodGroup = bloodGroup;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getProfilePicture() {
+        return profilePicture;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public int getId() {
@@ -169,7 +169,7 @@ public class MemberDTO implements Serializable {
                 ", phoneNo='" + phoneNo + '\'' +
                 ", email='" + email + '\'' +
                 ", bloodGroup='" + bloodGroup + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
                 '}';
     }
 }
