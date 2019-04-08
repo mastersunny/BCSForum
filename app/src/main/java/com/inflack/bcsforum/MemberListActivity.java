@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.rest.ApiClient;
@@ -24,6 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +40,9 @@ public class MemberListActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_member_name)
     RecyclerView recyclerView;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     MemberListAdapter memberListAdapter;
 
@@ -65,11 +71,13 @@ public class MemberListActivity extends AppCompatActivity {
     }
 
     private void getData() {
+        progressBar.setVisibility(View.VISIBLE);
         memberDTOS.clear();
         memberDTOSCopy.clear();
         apiInterface.getMembers().enqueue(new Callback<List<MemberDTO>>() {
             @Override
             public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
+                progressBar.setVisibility(View.GONE);
                 Log.d(TAG, response + "");
                 if (response != null && response.isSuccessful()) {
                     memberDTOS.addAll(response.body());
@@ -83,6 +91,8 @@ public class MemberListActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<MemberDTO>> call, Throwable t) {
                 Log.d(TAG, t.getMessage());
+                progressBar.setVisibility(View.GONE);
+                Toasty.error(MemberListActivity.this, "Could not fetch data", Toast.LENGTH_SHORT, true).show();
             }
         });
 

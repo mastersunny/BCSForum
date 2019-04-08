@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        show_dialog_layout.setClickable(true);
+
 
 //        String[] numbers = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 //        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(this, R.layout.list_item, numbers);
