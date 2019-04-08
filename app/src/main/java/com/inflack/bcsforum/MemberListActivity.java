@@ -33,8 +33,6 @@ import retrofit2.Response;
 
 public class MemberListActivity extends AppCompatActivity {
 
-    private String TAG = "MemberListActivity";
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -78,7 +76,7 @@ public class MemberListActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
                 progressBar.setVisibility(View.GONE);
-                Log.d(TAG, response + "");
+//                Log.d(TAG, response + "");
                 if (response != null && response.isSuccessful()) {
                     memberDTOS.addAll(response.body());
                     memberDTOSCopy.addAll(memberDTOS);
@@ -90,7 +88,7 @@ public class MemberListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<MemberDTO>> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
+//                Log.d(TAG, t.getMessage());
                 progressBar.setVisibility(View.GONE);
                 Toasty.error(MemberListActivity.this, "Could not fetch data", Toast.LENGTH_SHORT, true).show();
             }
@@ -173,7 +171,6 @@ public class MemberListActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 memberDTOS.clear();
                 for (int i = 0; i < memberDTOSCopy.size(); i++) {
-                    Log.d("TAG", "dfdsf");
                     if (memberDTOSCopy.get(i).getName().toLowerCase().contains(s.toLowerCase())) {
                         memberDTOS.add(memberDTOSCopy.get(i));
                     }

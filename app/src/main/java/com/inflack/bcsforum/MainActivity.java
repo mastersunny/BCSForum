@@ -18,7 +18,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String TAG = "MainActivity";
+//    public String TAG = "MainActivity";
     Toolbar toolbar;
 
 //    NavigationView navigationView;
