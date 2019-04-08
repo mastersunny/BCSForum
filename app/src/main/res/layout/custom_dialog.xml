@@ -6,6 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingStart="16dp"
+    android:paddingTop="16dp"
     android:paddingEnd="16dp"
     android:paddingBottom="32dp">
 
@@ -63,10 +64,11 @@
 
     <ImageView
         android:id="@+id/img_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorPrimary"
-        android:src="@drawable/ic_cross" />
+        android:background="?selectableItemBackground"
+        android:padding="5dp"
+        android:src="@drawable/ic_cross_blue" />
 
 </RelativeLayout>

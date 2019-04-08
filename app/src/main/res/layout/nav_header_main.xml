@@ -25,6 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="16dp"
+            android:background="?selectableItemBackground"
             android:padding="5dp"
             android:src="@drawable/ic_edit" />
 
@@ -35,6 +36,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
+            android:background="?selectableItemBackground"
             android:padding="5dp"
             android:src="@drawable/ic_cross" />
 

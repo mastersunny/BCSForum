@@ -22,8 +22,10 @@
             <ImageView
                 android:id="@+id/img_notification"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="end"
+                android:background="?selectableItemBackground"
+                android:padding="5dp"
                 android:src="@drawable/ic_notification" />
 
         </android.support.v7.widget.Toolbar>
