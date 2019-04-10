@@ -44,7 +44,8 @@
         <activity android:name=".SplashActivity2" />
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
         <activity android:name=".EditProfileActivity" />
-        <activity android:name=".EditProfileActivity2"></activity>
+        <activity android:name=".EditProfileActivity2" />
+        <activity android:name=".ForumCommitteeActivity" />
     </application>
 
 </manifest>

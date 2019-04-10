@@ -1,5 +1,6 @@
 package com.inflack.bcsforum.rest;
 
+import com.inflack.bcsforum.model.CommitteeDTO;
 import com.inflack.bcsforum.model.MemberDTO;
 
 import java.util.List;
@@ -15,5 +16,8 @@ public interface ApiInterface {
 
     @GET("api/contacts")
     Call<List<MemberDTO>> getMembers();
+
+    @GET("api/committeenforums")
+    Call<List<CommitteeDTO>> getCommitteeForums();
 
 }

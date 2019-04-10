@@ -11,4 +11,7 @@
     <string name="FACEBOOK_APP_ID">377013812891228</string>
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">242c0ef5b321bacc14a41618356f03d3</string>
 
+    <string name="forum_committee">ফোরাম কমিটির তালিকা</string>
+    <string name="forum_structure">ফোরামের গঠনতন্ত্র</string>
+
 </resources>

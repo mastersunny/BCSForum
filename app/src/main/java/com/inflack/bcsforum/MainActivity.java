@@ -18,7 +18,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-//    public String TAG = "MainActivity";
+    //    public String TAG = "MainActivity";
     Toolbar toolbar;
 
 //    NavigationView navigationView;
@@ -185,7 +185,8 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile, R.id.img_notification})
+    @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile, R.id.img_notification,
+            R.id.nav_forum_committee, R.id.nav_forum_structure})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.show_dialog_layout:
@@ -193,17 +194,33 @@ public class MainActivity extends AppCompatActivity {
                 customDialog.show();
                 break;
             case R.id.img_edit_profile:
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                }
+                closeDrawer();
                 Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.img_notification:
                 Utils.startNotificationActivity(MainActivity.this);
                 break;
+            case R.id.nav_forum_committee:
+                closeDrawer();
+                intent = new Intent(MainActivity.this, ForumCommitteeActivity.class);
+                intent.putExtra(ForumCommitteeActivity.CATEGORY, "committee");
+                startActivity(intent);
+                break;
+            case R.id.nav_forum_structure:
+                closeDrawer();
+                intent = new Intent(MainActivity.this, ForumCommitteeActivity.class);
+                intent.putExtra(ForumCommitteeActivity.CATEGORY, "forum");
+                startActivity(intent);
+                break;
         }
 
+    }
+
+    private void closeDrawer() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
     }
 
 }
