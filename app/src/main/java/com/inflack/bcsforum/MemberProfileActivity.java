@@ -1,14 +1,24 @@
 package com.inflack.bcsforum;
 
+import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.rest.ApiClient;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import butterknife.BindView;
@@ -86,6 +96,10 @@ public class MemberProfileActivity extends AppCompatActivity {
         tv_blood_group.setText("রক্তের গ্রুপঃ " + memberDTO.getBloodGroup());
 
 
+        Linkify.addLinks(tv_phone_no, Linkify.PHONE_NUMBERS);
+        Linkify.addLinks(tv_email, Linkify.EMAIL_ADDRESSES);
+
+
         findViewById(R.id.img_notification).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +129,39 @@ public class MemberProfileActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @OnClick({R.id.tv_phone_no, R.id.tv_email})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_phone_no:
+                makePhoneCall();
+                break;
+            case R.id.tv_email:
+                break;
+        }
+    }
+
+    private void makePhoneCall() {
+        Dexter.withActivity(this)
+                .withPermission(Manifest.permission.CALL_PHONE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        String uri = "tel:" + tv_phone_no.getText().toString().trim();
+                        Intent intent = new Intent(Intent.ACTION_CALL);
+                        intent.setData(Uri.parse(uri));
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
+                }).check();
     }
 
 }

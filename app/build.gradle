@@ -41,4 +41,5 @@ dependencies {
     implementation 'com.facebook.android:account-kit-sdk:4.+'
     implementation 'com.ornach.bitpermission:bit-permission:1.1'
     implementation 'com.github.GrenderG:Toasty:1.4.1'
+    implementation 'com.karumi:dexter:5.0.0'
 }
