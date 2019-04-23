@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile, R.id.img_notification,
-            R.id.nav_forum_committee, R.id.nav_forum_structure})
+            R.id.nav_forum_committee, R.id.nav_forum_structure, R.id.img_close_drawer})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.show_dialog_layout:
@@ -212,6 +212,9 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, ForumCommitteeActivity.class);
                 intent.putExtra(ForumCommitteeActivity.CATEGORY, "forum");
                 startActivity(intent);
+                break;
+            case R.id.img_close_drawer:
+                closeDrawer();
                 break;
         }
 

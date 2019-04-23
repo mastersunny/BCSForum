@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.inflack.bcsforum.model.CommitteeDTO;
@@ -22,11 +24,10 @@ import retrofit2.Response;
 
 public class ForumCommitteeActivity extends AppCompatActivity {
 
-    @BindView(R.id.text_view)
-    TextView text_view;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    WebView webview;
 
     private String category = "";
     public static final String CATEGORY = "category";
@@ -39,6 +40,11 @@ public class ForumCommitteeActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        webview = (WebView) findViewById(R.id.webview);
+
+        webview.setWebViewClient(new WebViewClient());
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setDomStorageEnabled(true);
 
         getIntentData();
         initLayout();
@@ -74,11 +80,13 @@ public class ForumCommitteeActivity extends AppCompatActivity {
                     List<CommitteeDTO> committeeDTOS = response.body();
                     for (int i = 0; i < committeeDTOS.size(); i++) {
                         if (committeeDTOS.get(i).getCategory().equals(category)) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                                text_view.setText(Html.fromHtml(committeeDTOS.get(i).getContent(), Html.FROM_HTML_MODE_COMPACT));
-                            } else {
-                                text_view.setText(Html.fromHtml(committeeDTOS.get(i).getContent()));
-                            }
+                            webview.loadData(committeeDTOS.get(i).getContent(), "text/html", "UTF-8");
+
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//                                text_view.setText(Html.fromHtml(committeeDTOS.get(i).getContent(), Html.FROM_HTML_MODE_COMPACT));
+//                            } else {
+//                                text_view.setText(Html.fromHtml(committeeDTOS.get(i).getContent()));
+//                            }
                             break;
                         }
                     }

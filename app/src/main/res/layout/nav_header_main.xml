@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -24,7 +24,6 @@
             android:layout_height="32dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
             android:background="?selectableItemBackground"
             android:padding="5dp"
             android:src="@drawable/ic_edit" />
@@ -35,7 +34,6 @@
             android:layout_height="32dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
             android:background="?selectableItemBackground"
             android:padding="5dp"
             android:src="@drawable/ic_cross" />
@@ -55,14 +53,14 @@
             android:id="@+id/img_profile"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            app:srcCompat="@drawable/abdul" />
+            app:srcCompat="@drawable/nishat" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="মোহাম্মদ আব্দুল হাই, পি এ এ"
+            android:text="কাজী নিশাত রসুল"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
@@ -71,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)"
+            android:text="মাননীয় প্রধানমন্ত্রীর সহকারী একান্ত সচিব (উপ-সচিব),"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
@@ -80,7 +78,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট"
+            android:text="প্রধানমন্ত্রীর কার্যালয়"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="সভাপতি-২২তম বিসিএস ফোরাম"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
