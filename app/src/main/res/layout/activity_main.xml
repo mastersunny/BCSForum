@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_list" />
+                    app:srcCompat="@drawable/ic_list" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_user" />
+                    app:srcCompat="@drawable/ic_user" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_chart" />
+                    app:srcCompat="@drawable/ic_chart" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -154,29 +154,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ডেভেলপঃ"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="48dp"
                         android:layout_height="32dp"
-                        android:padding="5dp"
                         android:src="@drawable/inflack_logo" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="বাড়ি# ৩৬, রোড# ১, ব্লক# এ\nবসুন্ধরা আ/এ, ঢাকা-১২২৯, বাংলাদেশ"
-                        android:textSize="12sp" />
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="অফিসঃ\n+৮৮০ ১৭০৮ ০০৬১৬৮" />
+                        android:text="অফিসঃ +৮৮০ ১৭০৮ ০০৬১৬৮"
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ই-মেইলঃ\ninfo@inflack.com" />
+                        android:text="ই-মেইলঃ info@inflack.com"
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
 
 
                 </LinearLayout>
@@ -187,17 +191,22 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/inflack_logo"
+                        android:visibility="invisible" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="উদ্যেক্তাঃ"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="মোহাম্মদ আব্দুল হাই, পি এ এ"
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
@@ -206,17 +215,17 @@
                         android:id="@+id/tv_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
                         android:text="প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)"
-                        android:textSize="12sp" />
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
                         android:text="স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট"
-                        android:textSize="12sp" />
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 

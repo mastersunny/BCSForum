@@ -28,7 +28,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="?selectableItemBackground"
                 android:padding="5dp"
-                android:src="@drawable/ic_notification" />
+                app:srcCompat="@drawable/ic_notification" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -159,6 +159,7 @@
                         android:id="@+id/tv_phone_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:autoLink="phone"
                         android:text="" />
 
                     <TextView
