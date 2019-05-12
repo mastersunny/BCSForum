@@ -40,13 +40,11 @@ public class EditProfileActivity2 extends AppCompatActivity {
     @BindView(R.id.edt_company_layout)
     LinearLayout edt_company_layout;
 
-    private MemberDTO memberDTO = new MemberDTO();
+    private MemberDTO memberDTO;
 
     public static final String NAME = "name";
     public static final String DESIGNATION = "designation";
     public static final String COMPANY = "company";
-
-    private String name, designation, company;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +59,11 @@ public class EditProfileActivity2 extends AppCompatActivity {
 
     private void getIntentData() {
         Intent intent = getIntent();
+        if (intent.hasExtra(MemberDTO.TAG)) {
+            memberDTO = (MemberDTO) intent.getSerializableExtra(MemberDTO.TAG);
+        }
         if (intent.hasExtra(NAME)) {
-            edt_name.setText(intent.getStringExtra(NAME));
+            edt_name.setText(memberDTO.getName());
             edt_name_layout.setVisibility(View.VISIBLE);
             edt_designation_layout.setVisibility(View.GONE);
             edt_company_layout.setVisibility(View.GONE);
@@ -71,10 +72,10 @@ public class EditProfileActivity2 extends AppCompatActivity {
             edt_designation_layout.setVisibility(View.VISIBLE);
             edt_company_layout.setVisibility(View.VISIBLE);
             if (intent.hasExtra(DESIGNATION)) {
-                edt_designation.setText(intent.getStringExtra(DESIGNATION));
+                edt_designation.setText(memberDTO.getDesignation());
             }
             if (intent.hasExtra(COMPANY)) {
-                edt_company.setText(intent.getStringExtra(COMPANY));
+                edt_company.setText(memberDTO.getCompany());
             }
         }
     }

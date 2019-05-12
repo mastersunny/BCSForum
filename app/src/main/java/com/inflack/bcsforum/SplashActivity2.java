@@ -57,6 +57,7 @@ public class SplashActivity2 extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_change_password:
+                changePassword();
                 break;
             case R.id.btn_login:
                 login();
@@ -104,6 +105,10 @@ public class SplashActivity2 extends AppCompatActivity {
                 Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
             }
         });
+    }
+
+    private void changePassword() {
+        
     }
 
     public static int APP_REQUEST_CODE = 99;

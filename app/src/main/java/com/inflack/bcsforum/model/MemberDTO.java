@@ -1,35 +1,54 @@
 package com.inflack.bcsforum.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
 import java.io.Serializable;
 import java.util.List;
 
+
 public class MemberDTO extends SugarRecord implements Serializable {
 
+    public static final String TAG = "memberdto";
+
+    @Expose
+    @SerializedName("id")
+    private int userId;
+    @Expose
     @SerializedName("name")
     private String name;
+    @Expose
     @SerializedName("designation")
     private String designation;
+    @Expose
     @SerializedName("company")
     private String company;
+    @Expose
     @SerializedName("id_no")
     private String idNo;
+    @Expose
     @SerializedName("current_workplace")
     private String currentEmployment;
+    @Expose
     @SerializedName("previous_workplace")
     private String previousEmployment;
+    @Expose
     @SerializedName("birth_district")
     private String district;
+    @Expose
     @SerializedName("dob")
     private String dateOfBirth;
+    @Expose
     @SerializedName("cell_no")
     private String phoneNo;
+    @Expose
     @SerializedName("email")
     private String email;
+    @Expose
     @SerializedName("blood_group")
     private String bloodGroup;
+    @Expose
     @SerializedName("profile_picture")
     private String profilePicture;
 
@@ -147,10 +166,19 @@ public class MemberDTO extends SugarRecord implements Serializable {
         this.idNo = idNo;
     }
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "MemberDTO{" +
-                "name='" + name + '\'' +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
                 ", designation='" + designation + '\'' +
                 ", company='" + company + '\'' +
                 ", idNo='" + idNo + '\'' +

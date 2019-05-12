@@ -94,13 +94,15 @@ public class EditProfileActivity extends AppCompatActivity {
                 break;
             case R.id.img_edit_name:
                 intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
-                intent.putExtra(EditProfileActivity2.NAME, memberDTO.getName());
+                intent.putExtra(EditProfileActivity2.NAME, true);
+                intent.putExtra(MemberDTO.TAG, memberDTO);
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);
                 break;
             case R.id.img_edit_desig:
                 intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
-                intent.putExtra(EditProfileActivity2.DESIGNATION, "প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)");
-                intent.putExtra(EditProfileActivity2.COMPANY, "স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট");
+                intent.putExtra(EditProfileActivity2.DESIGNATION, true);
+                intent.putExtra(EditProfileActivity2.COMPANY, true);
+                intent.putExtra(MemberDTO.TAG, memberDTO);
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);
                 break;
         }
