@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.accountkit.AccountKit;
+import com.inflack.bcsforum.model.MemberDTO;
 import com.ornach.bitpermission.BitPermission;
 import com.ornach.bitpermission.PermissionListener;
 
@@ -26,6 +28,17 @@ public class EditProfileActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.tv_name)
+    TextView tv_name;
+
+    @BindView(R.id.tv_designation)
+    TextView tv_designation;
+
+    @BindView(R.id.tv_company)
+    TextView tv_company;
+
+    MemberDTO memberDTO;
+
     private final int PICK_PHOTO_FOR_AVATAR = 999;
     private final int UPDATE_PROFILE_INFO = 888;
 
@@ -37,6 +50,7 @@ public class EditProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initLayout();
+        updateLayout();
     }
 
     private void initLayout() {
@@ -45,6 +59,15 @@ public class EditProfileActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    private void updateLayout() {
+        memberDTO = MemberDTO.getMember();
+        if (memberDTO != null) {
+            tv_name.setText(memberDTO.getName());
+            tv_designation.setText(memberDTO.getDesignation());
+            tv_company.setText(memberDTO.getCompany());
+        }
     }
 
     @Override
@@ -57,7 +80,7 @@ public class EditProfileActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_logout:
-                AccountKit.logOut();
+                MemberDTO.deleteAll(MemberDTO.class);
                 Intent intent = new Intent(EditProfileActivity.this, SplashActivity2.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -71,7 +94,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 break;
             case R.id.img_edit_name:
                 intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
-                intent.putExtra(EditProfileActivity2.NAME, "মোহাম্মদ আব্দুল হাই, পি এ এ");
+                intent.putExtra(EditProfileActivity2.NAME, memberDTO.getName());
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);
                 break;
             case R.id.img_edit_desig:

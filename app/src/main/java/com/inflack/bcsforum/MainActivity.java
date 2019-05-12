@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.inflack.bcsforum.model.MemberDTO;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -55,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
 ////        navigationView.setNavigationItemSelectedListener(this);
 ////
         initLayout();
+        updateUserInfo();
+    }
+
+    private void updateUserInfo() {
+        MemberDTO memberDTO = MemberDTO.getMember();
+        
     }
 
     @Override

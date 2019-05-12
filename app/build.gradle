@@ -43,4 +43,7 @@ dependencies {
     implementation 'com.ornach.bitpermission:bit-permission:1.1'
     implementation 'com.github.GrenderG:Toasty:1.4.1'
     implementation 'com.karumi:dexter:5.0.0'
+
+    implementation 'com.github.satyan:sugar:1.5'
+    implementation 'com.ornach.richtext:richtext:1.0'
 }

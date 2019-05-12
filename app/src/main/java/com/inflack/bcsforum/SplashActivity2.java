@@ -3,6 +3,8 @@ package com.inflack.bcsforum;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,13 +14,35 @@ import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.model.UserResponse;
+import com.inflack.bcsforum.rest.ApiClient;
+import com.inflack.bcsforum.rest.ApiInterface;
+import com.ornach.richtext.RichEditText;
 
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SplashActivity2 extends AppCompatActivity {
 
-    AccessToken accessToken = AccountKit.getCurrentAccessToken();
+    public String TAG = "SplashActivity2";
+
+    ApiInterface apiInterface;
+
+    @BindView(R.id.edt_id_no)
+    RichEditText edt_id_no;
+
+    @BindView(R.id.edt_password)
+    RichEditText edt_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +50,60 @@ public class SplashActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_splash2);
 
         ButterKnife.bind(this);
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
-    @OnClick({R.id.btn_login})
+    @OnClick({R.id.btn_change_password, R.id.btn_login})
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_change_password:
+                break;
+            case R.id.btn_login:
+                login();
+                break;
+        }
 
         //Handle new or logged out user
-        phoneLogin();
+//        phoneLogin();
 
+    }
+
+    private void login() {
+        String idNo = edt_id_no.getText().toString().trim();
+        String password = edt_password.getText().toString().trim();
+        if (TextUtils.isEmpty(idNo)) {
+            edt_id_no.setError("Cannot be empty");
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            edt_password.setError("Cannot be empty");
+            return;
+        }
+
+        apiInterface.login(idNo, password).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                Log.d(TAG, response + "");
+                if (response.isSuccessful()) {
+                    Log.d(TAG, response.body() + "");
+                    if (response.body().getUser().size() > 0) {
+                        MemberDTO memberDTO = response.body().getUser().get(0);
+                        memberDTO.save();
+                        goToMyLoggedInActivity();
+                    } else {
+                        Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
+                    }
+                } else {
+                    Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
+            }
+        });
     }
 
     public static int APP_REQUEST_CODE = 99;

@@ -1,12 +1,13 @@
 package com.inflack.bcsforum.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class MemberDTO implements Serializable {
+public class MemberDTO extends SugarRecord implements Serializable {
 
-    private int id;
     @SerializedName("name")
     private String name;
     @SerializedName("designation")
@@ -130,14 +131,6 @@ public class MemberDTO implements Serializable {
         this.profilePicture = profilePicture;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -157,8 +150,7 @@ public class MemberDTO implements Serializable {
     @Override
     public String toString() {
         return "MemberDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", designation='" + designation + '\'' +
                 ", company='" + company + '\'' +
                 ", idNo='" + idNo + '\'' +
@@ -171,5 +163,14 @@ public class MemberDTO implements Serializable {
                 ", bloodGroup='" + bloodGroup + '\'' +
                 ", profilePicture='" + profilePicture + '\'' +
                 '}';
+    }
+
+    public static MemberDTO getMember() {
+        List<MemberDTO> branches = MemberDTO.listAll(MemberDTO.class);
+        if (branches != null && branches.size() > 0) {
+            return branches.get(0);
+        } else {
+            return null;
+        }
     }
 }

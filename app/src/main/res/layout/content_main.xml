@@ -72,7 +72,7 @@
                 android:paddingBottom="16dp"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:text="আমার সোনার বাংলা, আমি তোমায় ভালবাসি| চিরদিন তোমার আকাশ, তোমার বাতাস, আমার প্রাণে বাজায় বাঁশি।"
+                android:text="বিসিএস ২২তম (এডমিন) ফোরামের এর জন্য মোবাইল এ্যাপ্স (এন্ড্রয়েড ভার্শন)  তৈরি করা হয়েছে । প্রত্যেক সম্মানিত সদস্যকে লগইন করে নিজের তথ্য আপডেট করার জন্য বিশেষভাবে অনুরোধ করা হলো।"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 

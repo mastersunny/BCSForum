@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 
 import com.facebook.accountkit.AccessToken;
 import com.facebook.accountkit.AccountKit;
+import com.inflack.bcsforum.model.MemberDTO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,8 +26,6 @@ public class SplashActivity extends AppCompatActivity {
     private ObjectAnimator animation;
 
     private Handler handler = new Handler();
-
-    AccessToken accessToken = AccountKit.getCurrentAccessToken();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,8 @@ public class SplashActivity extends AppCompatActivity {
     Runnable splashRunnable = new Runnable() {
         @Override
         public void run() {
-            if (accessToken != null) {
+            MemberDTO memberDTO = MemberDTO.getMember();
+            if (memberDTO != null) {
                 //Handle Returning User
                 goToMyLoggedInActivity();
             } else {

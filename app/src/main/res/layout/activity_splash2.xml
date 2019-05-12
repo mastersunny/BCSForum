@@ -1,44 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SplashActivity">
-
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:background="@color/bg_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_logo" />
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_logo" />
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/bg_color">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout1">
 
-        <Button
+        <com.ornach.richtext.RichEditText
+            android:id="@+id/edt_id_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_avatar"
+            android:hint="Id No"
+            android:imeOptions="actionNext"
+            android:padding="16dp"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            app:rt_backgroundColor="#E4E4E4"
+            app:rt_borderColor="@android:color/transparent"
+            app:rt_borderWidth="1dp"
+            app:rt_radius="4dp" />
+
+        <com.ornach.richtext.RichEditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_lock"
+            android:hint="Password"
+            android:imeOptions="actionNext"
+            android:padding="16dp"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            app:rt_backgroundColor="#E4E4E4"
+            app:rt_borderColor="@android:color/transparent"
+            app:rt_borderWidth="1dp"
+            app:rt_radius="4dp" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/btn_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            app:nb_backgroundColor="#f0f0f0"
+            app:nb_borderColor="@color/colorPrimary"
+            app:nb_borderWidth="2dp"
+            app:nb_text="Change password"
+            app:nb_textColor="@color/colorPrimary"
+            app:nb_textSize="18sp"
+            app:nb_textStyle="bold" />
+
+        <com.ornach.nobobutton.NoboButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/colorPrimary"
-            android:text="লগইন"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:layout_marginTop="16dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            app:nb_backgroundColor="#f0f0f0"
+            app:nb_borderColor="@color/colorPrimary"
+            app:nb_borderWidth="2dp"
+            app:nb_text="Login"
+            app:nb_textColor="@color/colorPrimary"
+            app:nb_textSize="18sp"
+            app:nb_textStyle="bold" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
