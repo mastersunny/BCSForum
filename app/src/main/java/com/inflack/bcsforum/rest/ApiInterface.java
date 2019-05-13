@@ -1,5 +1,7 @@
 package com.inflack.bcsforum.rest;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
 import com.inflack.bcsforum.model.CommitteeDTO;
 import com.inflack.bcsforum.model.MemberDTO;
@@ -9,9 +11,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -32,8 +32,15 @@ public interface ApiInterface {
                              @Query("password") String password);
 
     @POST("api/editProfile")
-    @Headers({"Content-Type: application/json;charset=UTF-8"})
-    Call<String> editProfile(@Body MemberDTO memberDTO);
+    Call<JsonNode> editProfile(@Body MemberDTO json);
+
+    @GET("api/getProfile")
+    Call<UserResponse> getProfile(@Query("id_no") String id_no);
+
+    @POST("api/changePassword")
+    Call<JsonNode> changePassword(@Query("id_no") String id_no,
+                                  @Query("oldPassword") String oldPassword,
+                                  @Query("newPassword") String newPassword);
 
 
 }

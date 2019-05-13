@@ -4,8 +4,10 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.inflack.bcsforum.model.UserResponse;
 import com.inflack.bcsforum.rest.ApiClient;
 import com.inflack.bcsforum.rest.ApiInterface;
@@ -14,11 +16,14 @@ import com.ornach.richtext.RichEditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChangePasswordActivity extends AppCompatActivity {
+
+    public String TAG = "ChangePasswordActivity";
 
     @BindView(R.id.edt_id_no)
     RichEditText edt_id_no;
@@ -75,17 +80,27 @@ public class ChangePasswordActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.show();
-        apiInterface.login(idNo, password).enqueue(new Callback<UserResponse>() {
+        apiInterface.changePassword(idNo, password, newPassword).enqueue(new Callback<JsonNode>() {
             @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                Log.d(TAG, response + "");
                 progressDialog.cancel();
+                if (response.isSuccessful()) {
+                    Toasty.success(ChangePasswordActivity.this, "Password changed successfully", Toasty.LENGTH_SHORT)
+                            .show();
+                    finish();
+                } else {
+                    Toasty.error(ChangePasswordActivity.this, "Password change error", Toasty.LENGTH_SHORT)
+                            .show();
+                }
 
             }
 
             @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
+            public void onFailure(Call<JsonNode> call, Throwable t) {
                 progressDialog.cancel();
-
+                Toasty.error(ChangePasswordActivity.this, "Password change error", Toasty.LENGTH_SHORT)
+                        .show();
             }
         });
 

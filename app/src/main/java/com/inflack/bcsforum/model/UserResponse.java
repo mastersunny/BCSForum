@@ -1,5 +1,6 @@
 package com.inflack.bcsforum.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,12 +8,12 @@ import java.util.List;
 
 public class UserResponse {
 
-    @Expose
-    @SerializedName("status")
+
+    @JsonProperty("status")
     String status;
 
-    @Expose
-    @SerializedName("user")
+
+    @JsonProperty("user")
     List<MemberDTO> user;
 
     public String getStatus() {

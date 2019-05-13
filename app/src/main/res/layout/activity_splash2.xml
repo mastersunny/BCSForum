@@ -83,27 +83,10 @@
             app:rt_radius="4dp" />
 
         <com.ornach.nobobutton.NoboButton
-            android:id="@+id/btn_change_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="10dp"
-            app:nb_backgroundColor="@android:color/transparent"
-            app:nb_borderColor="@color/colorPrimary"
-            app:nb_borderWidth="1dp"
-            app:nb_text="পাসওয়ার্ড পরিবর্তন"
-            app:nb_textColor="@color/colorPrimary"
-            app:nb_textSize="18sp"
-            app:nb_textStyle="bold" />
-
-        <com.ornach.nobobutton.NoboButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
@@ -113,6 +96,23 @@
             app:nb_borderWidth="2dp"
             app:nb_text="লগ ইন"
             app:nb_textColor="@android:color/white"
+            app:nb_textSize="18sp"
+            app:nb_textStyle="bold" />
+
+        <com.ornach.nobobutton.NoboButton
+            android:id="@+id/btn_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            app:nb_backgroundColor="@android:color/transparent"
+            app:nb_borderColor="@color/colorPrimary"
+            app:nb_borderWidth="1dp"
+            app:nb_text="পাসওয়ার্ড পরিবর্তন"
+            app:nb_textColor="@color/colorPrimary"
             app:nb_textSize="18sp"
             app:nb_textStyle="bold" />
 

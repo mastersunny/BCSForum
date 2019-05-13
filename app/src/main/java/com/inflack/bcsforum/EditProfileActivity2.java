@@ -1,5 +1,6 @@
 package com.inflack.bcsforum;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.model.UserResponse;
 import com.inflack.bcsforum.rest.ApiClient;
@@ -120,6 +125,20 @@ public class EditProfileActivity2 extends AppCompatActivity {
         }
     }
 
+    ProgressDialog progressDialog;
+
+    private void showProgress() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void cancelProgress() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.cancel();
+        }
+    }
+
     private void editProfile() {
 
         if (memberDTO == null) {
@@ -149,26 +168,36 @@ public class EditProfileActivity2 extends AppCompatActivity {
         memberDTO.setDesignation(designation);
         memberDTO.setCompany(company);
 
-        apiInterface.editProfile(memberDTO).enqueue(new Callback<String>() {
+        showProgress();
+        apiInterface.editProfile(memberDTO).enqueue(new Callback<JsonNode>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                cancelProgress();
                 Log.d(TAG, response + "");
                 if (response.isSuccessful()) {
-                    if (response.body() != null && response.body().equalsIgnoreCase("success")) {
-                        Toasty.success(EditProfileActivity2.this, "Profile updated successfully");
+                    String status = "";
+                    try {
+                        status = response.body().get("status").asText();
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+                    if (response.body() != null && status.equalsIgnoreCase("success")) {
+                        Toasty.success(EditProfileActivity2.this, "Profile updated successfully").show();
                         memberDTO.update();
+                        finish();
                     } else {
-                        Toasty.error(EditProfileActivity2.this, "Cannot update now");
+                        Toasty.error(EditProfileActivity2.this, "Cannot update now").show();
                     }
                 } else {
-                    Toasty.error(EditProfileActivity2.this, "Cannot update now");
+                    Toasty.error(EditProfileActivity2.this, "Cannot update now").show();
                 }
-                finish();
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toasty.error(EditProfileActivity2.this, "Cannot update now");
+            public void onFailure(Call<JsonNode> call, Throwable t) {
+                cancelProgress();
+                Log.e(TAG, t.getMessage());
+                Toasty.error(EditProfileActivity2.this, "Cannot update now").show();
             }
         });
 

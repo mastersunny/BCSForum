@@ -1,5 +1,6 @@
 package com.inflack.bcsforum;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,6 +70,20 @@ public class SplashActivity2 extends AppCompatActivity {
 
     }
 
+    ProgressDialog progressDialog;
+
+    private void showProgress() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void cancelProgress() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.cancel();
+        }
+    }
+
     private void login() {
         String idNo = edt_id_no.getText().toString().trim();
         String password = edt_password.getText().toString().trim();
@@ -81,10 +96,11 @@ public class SplashActivity2 extends AppCompatActivity {
             edt_password.setError("Cannot be empty");
             return;
         }
-
+        showProgress();
         apiInterface.login(idNo, password).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                cancelProgress();
                 Log.d(TAG, response + "");
                 if (response.isSuccessful()) {
                     Log.d(TAG, response.body() + "");
@@ -103,12 +119,17 @@ public class SplashActivity2 extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
+                cancelProgress();
+                Log.e(TAG, t.getMessage());
                 Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
             }
         });
     }
 
     private void changePassword() {
+        Intent intent = new Intent(this, ChangePasswordActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
 
     }
 

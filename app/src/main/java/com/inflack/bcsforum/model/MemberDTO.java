@@ -1,5 +1,7 @@
 package com.inflack.bcsforum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
@@ -7,49 +9,48 @@ import com.orm.SugarRecord;
 import java.io.Serializable;
 import java.util.List;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MemberDTO extends SugarRecord implements Serializable {
 
     public static final String TAG = "memberdto";
 
-    @Expose
-    @SerializedName("id")
+    @JsonProperty("id")
     private int userId;
-    @Expose
-    @SerializedName("name")
+
+    @JsonProperty("name")
     private String name;
-    @Expose
-    @SerializedName("designation")
+
+    @JsonProperty("designation")
     private String designation;
-    @Expose
-    @SerializedName("company")
+
+    @JsonProperty("company")
     private String company;
-    @Expose
-    @SerializedName("id_no")
+
+    @JsonProperty("id_no")
     private String idNo;
-    @Expose
-    @SerializedName("current_workplace")
+
+    @JsonProperty("current_workplace")
     private String currentEmployment;
-    @Expose
-    @SerializedName("previous_workplace")
+
+    @JsonProperty("previous_workplace")
     private String previousEmployment;
-    @Expose
-    @SerializedName("birth_district")
+
+    @JsonProperty("birth_district")
     private String district;
-    @Expose
-    @SerializedName("dob")
+
+    @JsonProperty("dob")
     private String dateOfBirth;
-    @Expose
-    @SerializedName("cell_no")
+
+    @JsonProperty("cell_no")
     private String phoneNo;
-    @Expose
-    @SerializedName("email")
+
+    @JsonProperty("email")
     private String email;
-    @Expose
-    @SerializedName("blood_group")
+
+    @JsonProperty("blood_group")
     private String bloodGroup;
-    @Expose
-    @SerializedName("profile_picture")
+
+    @JsonProperty("profile_picture")
     private String profilePicture;
 
     public MemberDTO() {
