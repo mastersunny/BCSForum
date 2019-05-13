@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.facebook.accountkit.AccountKit;
 import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.rest.ApiClient;
 import com.ornach.bitpermission.BitPermission;
 import com.ornach.bitpermission.PermissionListener;
 
@@ -50,6 +52,11 @@ public class EditProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initLayout();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         updateLayout();
     }
 
@@ -67,6 +74,9 @@ public class EditProfileActivity extends AppCompatActivity {
             tv_name.setText(memberDTO.getName());
             tv_designation.setText(memberDTO.getDesignation());
             tv_company.setText(memberDTO.getCompany());
+            if (memberDTO.getProfilePicture() != null) {
+                Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture());
+            }
         }
     }
 

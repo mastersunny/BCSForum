@@ -76,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="@+id/dummy_view"
             app:layout_constraintStart_toStartOf="@+id/dummy_view"
             app:layout_constraintTop_toBottomOf="@+id/dummy_view"
-            app:srcCompat="@drawable/abdul" />
+            app:srcCompat="@drawable/ic_avatar" />
 
         <LinearLayout
             android:id="@+id/name_layout"

@@ -82,13 +82,14 @@ public class SplashActivity2 extends AppCompatActivity {
             return;
         }
 
-        apiInterface.login("১৫২৯১", "xyz১৫২৯১").enqueue(new Callback<UserResponse>() {
+        apiInterface.login(idNo, password).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 Log.d(TAG, response + "");
                 if (response.isSuccessful()) {
                     Log.d(TAG, response.body() + "");
-                    if (response.body().getUser() != null && response.body().getUser().size() > 0) {
+                    if (response.body().getUser() != null &&
+                            response.body().getUser().size() > 0) {
                         MemberDTO memberDTO = response.body().getUser().get(0);
                         memberDTO.save();
                         goToMyLoggedInActivity();

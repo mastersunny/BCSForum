@@ -8,7 +8,10 @@ import com.inflack.bcsforum.model.UserResponse;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -27,6 +30,10 @@ public interface ApiInterface {
     @POST("api/myProfile")
     Call<UserResponse> login(@Query("id_no") String id_no,
                              @Query("password") String password);
+
+    @POST("api/editProfile")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<String> editProfile(@Body MemberDTO memberDTO);
 
 
 }
