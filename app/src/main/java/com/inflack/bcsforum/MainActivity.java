@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.inflack.bcsforum.model.MemberDTO;
 
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.show_dialog_layout)
     FrameLayout show_dialog_layout;
+
+    @BindView(R.id.MarqueeText)
+    TextView MarqueeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
     private void initLayout() {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("২২ তম বিসিএস (এডমিন) ফোরাম");
+
+        MarqueeText.setSelected(true);
 
 //        View view = navigationView.getHeaderView(0);
 //        view.findViewById(R.id.img_close_drawer).setOnClickListener(new View.OnClickListener() {
