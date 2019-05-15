@@ -106,6 +106,7 @@ public class SplashActivity2 extends AppCompatActivity {
                     Log.d(TAG, response.body() + "");
                     if (response.body().getUser() != null &&
                             response.body().getUser().size() > 0) {
+                        MemberDTO.deleteAll(MemberDTO.class);
                         MemberDTO memberDTO = response.body().getUser().get(0);
                         memberDTO.save();
                         goToMyLoggedInActivity();
