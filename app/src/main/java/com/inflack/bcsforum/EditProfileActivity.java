@@ -39,6 +39,12 @@ public class EditProfileActivity extends AppCompatActivity {
     @BindView(R.id.tv_company)
     TextView tv_company;
 
+    @BindView(R.id.tv_phone_no)
+    TextView tv_phone_no;
+
+    @BindView(R.id.tv_email)
+    TextView tv_email;
+
     MemberDTO memberDTO;
 
     private final int PICK_PHOTO_FOR_AVATAR = 999;
@@ -74,6 +80,8 @@ public class EditProfileActivity extends AppCompatActivity {
             tv_name.setText(memberDTO.getName());
             tv_designation.setText(memberDTO.getDesignation());
             tv_company.setText(memberDTO.getCompany());
+            tv_phone_no.setText(memberDTO.getPhoneNo());
+            tv_email.setText(memberDTO.getEmail());
             if (memberDTO.getProfilePicture() != null) {
                 Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture());
             }
@@ -110,8 +118,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 break;
             case R.id.img_edit_desig:
                 intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
-                intent.putExtra(EditProfileActivity2.DESIGNATION, true);
-                intent.putExtra(EditProfileActivity2.COMPANY, true);
+                intent.putExtra(EditProfileActivity2.OTHER_INFO, true);
                 intent.putExtra(MemberDTO.TAG, memberDTO);
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);
                 break;

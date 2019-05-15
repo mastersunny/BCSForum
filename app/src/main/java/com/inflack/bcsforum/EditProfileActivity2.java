@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -39,13 +40,19 @@ public class EditProfileActivity2 extends AppCompatActivity {
     Toolbar toolbar;
 
     @BindView(R.id.edt_name)
-    TextView edt_name;
+    EditText edt_name;
 
     @BindView(R.id.edt_designation)
-    TextView edt_designation;
+    EditText edt_designation;
 
     @BindView(R.id.edt_company)
-    TextView edt_company;
+    EditText edt_company;
+
+    @BindView(R.id.edt_phone_no)
+    EditText edt_phone_no;
+
+    @BindView(R.id.edt_email)
+    EditText edt_email;
 
     @BindView(R.id.edt_name_layout)
     LinearLayout edt_name_layout;
@@ -56,11 +63,16 @@ public class EditProfileActivity2 extends AppCompatActivity {
     @BindView(R.id.edt_company_layout)
     LinearLayout edt_company_layout;
 
+    @BindView(R.id.edt_phone_layout)
+    LinearLayout edt_phone_layout;
+
+    @BindView(R.id.edt_email_layout)
+    LinearLayout edt_email_layout;
+
     private MemberDTO memberDTO;
 
     public static final String NAME = "name";
-    public static final String DESIGNATION = "designation";
-    public static final String COMPANY = "company";
+    public static final String OTHER_INFO = "other_info";
 
     ApiInterface apiInterface;
 
@@ -82,18 +94,28 @@ public class EditProfileActivity2 extends AppCompatActivity {
             memberDTO = (MemberDTO) intent.getSerializableExtra(MemberDTO.TAG);
         }
 
-        edt_name.setText(memberDTO.getName());
-        edt_designation.setText(memberDTO.getDesignation());
-        edt_company.setText(memberDTO.getCompany());
+        try {
+            edt_name.setText(memberDTO.getName());
+            edt_designation.setText(memberDTO.getDesignation());
+            edt_company.setText(memberDTO.getCompany());
+            edt_phone_no.setText(memberDTO.getPhoneNo());
+            edt_email.setText(memberDTO.getEmail());
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
 
         if (intent.hasExtra(NAME)) {
             edt_name_layout.setVisibility(View.VISIBLE);
             edt_designation_layout.setVisibility(View.GONE);
             edt_company_layout.setVisibility(View.GONE);
-        } else {
+            edt_phone_layout.setVisibility(View.GONE);
+            edt_email_layout.setVisibility(View.GONE);
+        } else if (intent.hasExtra(OTHER_INFO)) {
             edt_name_layout.setVisibility(View.GONE);
             edt_designation_layout.setVisibility(View.VISIBLE);
             edt_company_layout.setVisibility(View.VISIBLE);
+            edt_phone_layout.setVisibility(View.VISIBLE);
+            edt_email_layout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -148,6 +170,8 @@ public class EditProfileActivity2 extends AppCompatActivity {
         String name = edt_name.getText().toString().trim();
         String designation = edt_designation.getText().toString().trim();
         String company = edt_company.getText().toString().trim();
+        String phoneNo = edt_phone_no.getText().toString().trim();
+        String email = edt_email.getText().toString().trim();
 
         if (TextUtils.isEmpty(name)) {
             edt_name.setError("Cannot be empty");
@@ -163,10 +187,20 @@ public class EditProfileActivity2 extends AppCompatActivity {
             edt_company.setError("Cannot be empty");
             return;
         }
+        if (TextUtils.isEmpty(phoneNo)) {
+            edt_phone_no.setError("Cannot be empty");
+            return;
+        }
+        if (TextUtils.isEmpty(email)) {
+            edt_email.setError("Cannot be empty");
+            return;
+        }
 
         memberDTO.setName(name);
         memberDTO.setDesignation(designation);
         memberDTO.setCompany(company);
+        memberDTO.setPhoneNo(phoneNo);
+        memberDTO.setEmail(email);
 
         showProgress();
         apiInterface.editProfile(memberDTO).enqueue(new Callback<JsonNode>() {

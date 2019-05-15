@@ -3,6 +3,7 @@ package com.inflack.bcsforum;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,8 @@ public class CustomDialog extends Dialog implements
     public Activity context;
 
     LinearLayout member_name;
+
+    LinearLayout layout1;
 
     ImageView img_cancel;
 
@@ -38,19 +41,26 @@ public class CustomDialog extends Dialog implements
         img_cancel = findViewById(R.id.img_cancel);
         img_cancel.setOnClickListener(this);
 
+        layout1 = findViewById(R.id.layout1);
+        layout1.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.member_name:
-                Log.d("TAG", "safd");
                 Intent intent = new Intent(context, MemberListActivity.class);
                 context.startActivity(intent);
                 dismiss();
                 break;
             case R.id.img_cancel:
                 dismiss();
+                break;
+            case R.id.layout1:
+                Uri uri = Uri.parse("https://m.me/join/AbbAGxSTwKRcivB9"); // missing 'http://' will cause crashed
+                intent = new Intent(Intent.ACTION_VIEW, uri);
+                context.startActivity(intent);
                 break;
 
         }
