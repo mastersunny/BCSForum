@@ -9,10 +9,14 @@ import com.inflack.bcsforum.model.UserResponse;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 /**
@@ -41,6 +45,10 @@ public interface ApiInterface {
     Call<JsonNode> changePassword(@Query("id_no") String id_no,
                                   @Query("oldPassword") String oldPassword,
                                   @Query("newPassword") String newPassword);
+
+    @Multipart
+    @POST("api/profileUpload")
+    Call<JsonNode> updatePhoto(@Part MultipartBody.Part profile_picture);
 
 
 }
