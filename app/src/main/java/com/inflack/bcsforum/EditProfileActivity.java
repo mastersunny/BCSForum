@@ -16,8 +16,10 @@ import com.bumptech.glide.Glide;
 import com.facebook.accountkit.AccountKit;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.model.UserResponse;
 import com.inflack.bcsforum.rest.ApiClient;
 import com.inflack.bcsforum.rest.ApiInterface;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.ornach.bitpermission.BitPermission;
 import com.ornach.bitpermission.PermissionListener;
 
@@ -60,6 +62,9 @@ public class EditProfileActivity extends AppCompatActivity {
     @BindView(R.id.tv_email)
     TextView tv_email;
 
+    @BindView(R.id.img_profile)
+    CircularImageView img_profile;
+
     MemberDTO memberDTO;
 
     ApiInterface apiInterface;
@@ -100,8 +105,10 @@ public class EditProfileActivity extends AppCompatActivity {
             tv_company.setText(memberDTO.getCompany());
             tv_phone_no.setText(memberDTO.getPhoneNo());
             tv_email.setText(memberDTO.getEmail());
+            Constants.debugLog(TAG, memberDTO.getProfilePicture());
             if (memberDTO.getProfilePicture() != null) {
-                Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture());
+                Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture())
+                        .into(img_profile);
             }
         }
     }
@@ -184,7 +191,6 @@ public class EditProfileActivity extends AppCompatActivity {
             FileOutputStream out = null;
             InputStream in = null;
             try {
-                Constants.debugLog(TAG, "afafasfsf");
                 in = getContentResolver().openInputStream(data.getData());
                 File destFile = new File(Constants.getRootDirectory() + File.separator + "img.jpg");
                 out = new FileOutputStream(destFile);
@@ -214,25 +220,67 @@ public class EditProfileActivity extends AppCompatActivity {
 //            progressBar.setVisibility(View.VISIBLE);
             RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), destFile);
             MultipartBody.Part image = MultipartBody.Part.createFormData("profile_picture", destFile.getName(), reqFile);
-//            RequestBody body = RequestBody.create(MediaType.parse("text/plain"), memberDTO.getUserId() + "");
-//            Constants.debugLog(TAG, memberDTO.getUserId() + "");
-            apiInterface.updatePhoto(image).enqueue(new Callback<JsonNode>() {
+            RequestBody body = RequestBody.create(MediaType.parse("text/plain"), memberDTO.getUserId() + "");
+            apiInterface.updatePhoto(image, body).enqueue(new Callback<JsonNode>() {
                 @Override
                 public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
                     Constants.debugLog(TAG, response + "");
                     if (response.isSuccessful()) {
-
+                        String status = "";
+                        try {
+                            status = response.body().get("status").asText();
+                        } catch (Exception e) {
+                            Log.e(TAG, e.getMessage());
+                        }
+                        if (status.equalsIgnoreCase("success")) {
+                            Toasty.success(EditProfileActivity.this, "Profile updated successfully").show();
+                            getProfile();
+                        } else {
+                            Toasty.error(EditProfileActivity.this, "Cannot update now").show();
+                        }
+                    } else {
+                        Toasty.error(EditProfileActivity.this, "Cannot update now").show();
                     }
-                    Constants.debugLog(TAG, call.request().toString());
                 }
 
                 @Override
                 public void onFailure(Call<JsonNode> call, Throwable e) {
                     Constants.debugLog(TAG, e.toString());
+                    Toasty.error(EditProfileActivity.this, "Cannot update now").show();
                 }
             });
         } catch (Exception e) {
             Constants.debugLog(TAG, e.getMessage());
+            Toasty.error(EditProfileActivity.this, "Cannot update now").show();
         }
+    }
+
+    private void getProfile() {
+        apiInterface.getProfile(memberDTO.getIdNo()).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                Log.d(TAG, response + "");
+                if (response.isSuccessful()) {
+                    Log.d(TAG, response.body() + "");
+                    if (response.body().getUser() != null &&
+                            response.body().getUser().size() > 0) {
+                        MemberDTO.deleteAll(MemberDTO.class);
+                        MemberDTO memberDTO = response.body().getUser().get(0);
+                        memberDTO.save();
+                        updateLayout();
+                    } else {
+                        Toasty.error(EditProfileActivity.this, "Cannot update now").show();
+                    }
+                } else {
+                    Toasty.error(EditProfileActivity.this, "Cannot update now").show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toasty.error(EditProfileActivity.this, "Cannot update now").show();
+            }
+        });
     }
 }

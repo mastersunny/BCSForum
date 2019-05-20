@@ -12,7 +12,6 @@ public class UserResponse {
     @JsonProperty("status")
     String status;
 
-
     @JsonProperty("user")
     List<MemberDTO> user;
 

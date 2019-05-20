@@ -14,14 +14,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.model.NewsDTO;
+import com.inflack.bcsforum.rest.ApiClient;
+import com.inflack.bcsforum.rest.ApiInterface;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    public String TAG = "MainActivity";
+    public String TAG = "MainActivity";
     Toolbar toolbar;
 
 //    NavigationView navigationView;
@@ -34,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.MarqueeText)
     TextView MarqueeText;
 
+    ApiInterface apiInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 ////        fab.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +77,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUserInfo() {
         MemberDTO memberDTO = MemberDTO.getMember();
-        
+        apiInterface.getNewsUpdate().enqueue(new Callback<List<NewsDTO>>() {
+            @Override
+            public void onResponse(Call<List<NewsDTO>> call, Response<List<NewsDTO>> response) {
+                Constants.debugLog(TAG, response + "");
+                if (response.isSuccessful()) {
+                    if (response.body() != null && response.body().size() > 0 &&
+                            response.body().get(0).getCategory().equalsIgnoreCase("news")) {
+                        MarqueeText.setText(response.body().get(0).getContent());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<NewsDTO>> call, Throwable t) {
+                Constants.debugLog(TAG, t.getMessage());
+            }
+        });
+
     }
 
     @Override
