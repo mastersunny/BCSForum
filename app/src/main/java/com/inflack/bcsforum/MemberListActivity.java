@@ -171,7 +171,9 @@ public class MemberListActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 memberDTOS.clear();
                 for (int i = 0; i < memberDTOSCopy.size(); i++) {
-                    if (memberDTOSCopy.get(i).getName().toLowerCase().contains(s.toLowerCase())) {
+                    if (memberDTOSCopy.get(i).getName()
+                            .toLowerCase().contains(s.toLowerCase()) || memberDTOSCopy.get(i).getIdNo()
+                            .toLowerCase().contains(s.toLowerCase())) {
                         memberDTOS.add(memberDTOSCopy.get(i));
                     }
                 }

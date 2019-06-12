@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawer;
 
-    @BindView(R.id.show_dialog_layout)
-    FrameLayout show_dialog_layout;
+//    @BindView(R.id.show_dialog_layout)
+//    FrameLayout show_dialog_layout;
 
     @BindView(R.id.MarqueeText)
     TextView MarqueeText;
@@ -106,13 +106,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                show_dialog_layout.setClickable(false);
+//                show_dialog_layout.setClickable(false);
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                show_dialog_layout.setClickable(true);
+//                show_dialog_layout.setClickable(true);
             }
         };
         drawer.addDrawerListener(toggle);
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        show_dialog_layout.setClickable(true);
+//        show_dialog_layout.setClickable(true);
 
 
 //        String[] numbers = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
@@ -227,17 +227,25 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @OnClick({R.id.show_dialog_layout, R.id.img_edit_profile, R.id.img_notification,
-            R.id.nav_forum_committee, R.id.nav_forum_structure, R.id.img_close_drawer})
+    @OnClick({R.id.img_edit_profile,
+            R.id.img_notification,
+            R.id.nav_forum_committee,
+            R.id.nav_forum_structure,
+            R.id.img_close_drawer,
+            R.id.btn_member_list})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.show_dialog_layout:
-                CustomDialog customDialog = new CustomDialog(MainActivity.this);
-                customDialog.show();
-                break;
+//            case R.id.show_dialog_layout:
+//                CustomDialog customDialog = new CustomDialog(MainActivity.this);
+//                customDialog.show();
+//                break;
             case R.id.img_edit_profile:
                 closeDrawer();
                 Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_member_list:
+                intent = new Intent(MainActivity.this, MemberListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.img_notification:

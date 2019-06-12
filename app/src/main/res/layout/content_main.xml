@@ -31,6 +31,35 @@
 
         </FrameLayout>
 
+        <LinearLayout
+            android:id="@+id/btn_member_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/show_dialog_layout"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/dialog_item_selected"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorPrimary"
+                app:srcCompat="@drawable/ic_list_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="সদস্যগণের বিস্তারিত তথ্য"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
     </RelativeLayout>
 
     <LinearLayout
