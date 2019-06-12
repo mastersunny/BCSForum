@@ -16,8 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChangePasswordActivity"></activity>
-        <activity android:name=".BaseActivity" />
 
         <meta-data
             android:name="DATABASE"
@@ -42,6 +40,7 @@
             android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
 
         <activity android:name=".NotificatonActivity" />
+
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
@@ -52,13 +51,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+
+        <activity android:name=".BaseActivity" />
+
         <activity android:name=".MainActivity" />
+
         <activity android:name=".MemberListActivity" />
+
         <activity android:name=".MemberProfileActivity" />
-        <activity android:name=".SplashActivity2" />
+
+        <activity
+            android:name=".SplashActivity2"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
+
         <activity android:name=".EditProfileActivity" />
+
         <activity android:name=".EditProfileActivity2" />
+
         <activity android:name=".ForumCommitteeActivity" />
     </application>
 

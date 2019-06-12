@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.accountkit.AccessToken;
@@ -52,6 +55,17 @@ public class SplashActivity2 extends AppCompatActivity {
 
         ButterKnife.bind(this);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        edt_password.setOnEditorActionListener(new RichEditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    login();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @OnClick({R.id.btn_change_password, R.id.btn_login})
