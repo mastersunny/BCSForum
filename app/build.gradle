@@ -46,6 +46,7 @@ dependencies {
 
     implementation 'com.github.satyan:sugar:1.5'
     implementation 'com.ornach.richtext:richtext:1.0'
+    implementation 'id.zelory:compressor:2.1.0'
 
     implementation 'com.squareup.retrofit2:converter-jackson:2.5.0'
 }

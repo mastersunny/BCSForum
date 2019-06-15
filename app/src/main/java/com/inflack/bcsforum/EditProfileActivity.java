@@ -1,6 +1,7 @@
 package com.inflack.bcsforum;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -33,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
+import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -190,15 +192,22 @@ public class EditProfileActivity extends AppCompatActivity {
             }
             FileOutputStream out = null;
             InputStream in = null;
+            File compressedImageFile = null;
             try {
+                String rootPath = Constants.getRootDirectory();
+                File destFile = new File(rootPath + File.separator + "img.jpg");
+
                 in = getContentResolver().openInputStream(data.getData());
-                File destFile = new File(Constants.getRootDirectory() + File.separator + "img.jpg");
                 out = new FileOutputStream(destFile);
                 Bitmap bitmap = BitmapFactory.decodeStream(in);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
                 bitmap.recycle();
 
-                updatePhoto(destFile);
+                compressedImageFile = new Compressor(EditProfileActivity.this)
+                        .setDestinationDirectoryPath(rootPath)
+                        .compressToFile(destFile, "compressed_2.jpg");
+
+                updatePhoto(compressedImageFile);
 
             } catch (Exception e) {
                 Constants.debugLog(TAG, e.getMessage());
@@ -214,7 +223,22 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+    ProgressDialog progressDialog;
+
+    private void showProgress() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void cancelProgress() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.cancel();
+        }
+    }
+
     private void updatePhoto(final File destFile) {
+        showProgress();
         Constants.debugLog(TAG, destFile.getAbsolutePath());
         try {
 //            progressBar.setVisibility(View.VISIBLE);
@@ -224,6 +248,7 @@ public class EditProfileActivity extends AppCompatActivity {
             apiInterface.updatePhoto(image, body).enqueue(new Callback<JsonNode>() {
                 @Override
                 public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
+                    cancelProgress();
                     Constants.debugLog(TAG, response + "");
                     if (response.isSuccessful()) {
                         String status = "";
@@ -245,20 +270,24 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<JsonNode> call, Throwable e) {
+                    cancelProgress();
                     Constants.debugLog(TAG, e.toString());
                     Toasty.error(EditProfileActivity.this, "Cannot update now").show();
                 }
             });
         } catch (Exception e) {
+            cancelProgress();
             Constants.debugLog(TAG, e.getMessage());
             Toasty.error(EditProfileActivity.this, "Cannot update now").show();
         }
     }
 
     private void getProfile() {
+        showProgress();
         apiInterface.getProfile(memberDTO.getIdNo()).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                cancelProgress();
                 Log.d(TAG, response + "");
                 if (response.isSuccessful()) {
                     Log.d(TAG, response.body() + "");
@@ -279,6 +308,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
+                cancelProgress();
                 Toasty.error(EditProfileActivity.this, "Cannot update now").show();
             }
         });
