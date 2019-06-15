@@ -1,18 +1,22 @@
 
 package com.inflack.bcsforum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CommitteeDTO {
+import java.io.Serializable;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class CommitteeDTO implements Serializable {
 
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("created_at")
+    @SerializedName("createdAt")
     @Expose
     private String createdAt;
-    @SerializedName("updated_at")
+    @SerializedName("updatedAt")
     @Expose
     private String updatedAt;
     @SerializedName("name")

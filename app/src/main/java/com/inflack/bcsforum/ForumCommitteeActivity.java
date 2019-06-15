@@ -24,6 +24,8 @@ import retrofit2.Response;
 
 public class ForumCommitteeActivity extends AppCompatActivity {
 
+    public String TAG = "ForumCommitteeActivity";
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -76,17 +78,12 @@ public class ForumCommitteeActivity extends AppCompatActivity {
         apiInterface.getCommitteeForums().enqueue(new Callback<List<CommitteeDTO>>() {
             @Override
             public void onResponse(Call<List<CommitteeDTO>> call, Response<List<CommitteeDTO>> response) {
+                Constants.debugLog(TAG, response + "");
                 if (response.isSuccessful()) {
                     List<CommitteeDTO> committeeDTOS = response.body();
                     for (int i = 0; i < committeeDTOS.size(); i++) {
                         if (committeeDTOS.get(i).getCategory().equals(category)) {
                             webview.loadData(committeeDTOS.get(i).getContent(), "text/html", "UTF-8");
-
-//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                                text_view.setText(Html.fromHtml(committeeDTOS.get(i).getContent(), Html.FROM_HTML_MODE_COMPACT));
-//                            } else {
-//                                text_view.setText(Html.fromHtml(committeeDTOS.get(i).getContent()));
-//                            }
                             break;
                         }
                     }
@@ -96,7 +93,7 @@ public class ForumCommitteeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<CommitteeDTO>> call, Throwable t) {
-
+                Constants.debugLog(TAG, t.toString() + "");
             }
         });
     }

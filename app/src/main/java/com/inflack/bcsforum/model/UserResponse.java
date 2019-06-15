@@ -1,12 +1,15 @@
 package com.inflack.bcsforum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class UserResponse {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserResponse implements Serializable {
 
 
     @JsonProperty("status")
