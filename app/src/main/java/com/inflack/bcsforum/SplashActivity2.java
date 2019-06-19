@@ -115,9 +115,9 @@ public class SplashActivity2 extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 cancelProgress();
-                Log.d(TAG, response + "");
+                Constants.debugLog(TAG, response + "");
                 if (response.isSuccessful()) {
-                    Log.d(TAG, response.body() + "");
+                    Constants.debugLog(TAG, response.body() + "");
                     if (response.body().getUser() != null &&
                             response.body().getUser().size() > 0) {
                         MemberDTO.deleteAll(MemberDTO.class);
@@ -135,7 +135,7 @@ public class SplashActivity2 extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 cancelProgress();
-                Log.e(TAG, t.getMessage());
+                Constants.debugLog(TAG, t.getMessage());
                 Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
             }
         });

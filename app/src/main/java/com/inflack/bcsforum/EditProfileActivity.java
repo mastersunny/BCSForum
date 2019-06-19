@@ -288,9 +288,9 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 cancelProgress();
-                Log.d(TAG, response + "");
+                Constants.debugLog(TAG, response + "");
                 if (response.isSuccessful()) {
-                    Log.d(TAG, response.body() + "");
+                    Constants.debugLog(TAG, response.body() + "");
                     if (response.body().getUser() != null &&
                             response.body().getUser().size() > 0) {
                         MemberDTO.deleteAll(MemberDTO.class);

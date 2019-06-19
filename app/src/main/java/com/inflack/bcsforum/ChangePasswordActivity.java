@@ -97,7 +97,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         apiInterface.changePassword(idNo, password, newPassword).enqueue(new Callback<JsonNode>() {
             @Override
             public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
-                Log.d(TAG, response + "");
+                Constants.debugLog(TAG, response + "");
                 progressDialog.cancel();
                 if (response.isSuccessful()) {
                     Toasty.success(ChangePasswordActivity.this, "Password changed successfully", Toasty.LENGTH_SHORT)

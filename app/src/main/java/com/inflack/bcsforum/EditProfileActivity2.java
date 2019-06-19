@@ -101,7 +101,7 @@ public class EditProfileActivity2 extends AppCompatActivity {
             edt_phone_no.setText(memberDTO.getPhoneNo());
             edt_email.setText(memberDTO.getEmail());
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+            Constants.debugLog(TAG, e.getMessage());
         }
 
         if (intent.hasExtra(NAME)) {
@@ -207,13 +207,13 @@ public class EditProfileActivity2 extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonNode> call, Response<JsonNode> response) {
                 cancelProgress();
-                Log.d(TAG, response + "");
+                Constants.debugLog(TAG, response + "");
                 if (response.isSuccessful()) {
                     String status = "";
                     try {
                         status = response.body().get("status").asText();
                     } catch (Exception e) {
-                        Log.e(TAG, e.getMessage());
+                        Constants.debugLog(TAG, e.getMessage());
                     }
                     if (response.body() != null && status.equalsIgnoreCase("success")) {
                         Toasty.success(EditProfileActivity2.this, "Profile updated successfully").show();
@@ -230,7 +230,7 @@ public class EditProfileActivity2 extends AppCompatActivity {
             @Override
             public void onFailure(Call<JsonNode> call, Throwable t) {
                 cancelProgress();
-                Log.e(TAG, t.getMessage());
+                Constants.debugLog(TAG, t.getMessage());
                 Toasty.error(EditProfileActivity2.this, "Cannot update now").show();
             }
         });
