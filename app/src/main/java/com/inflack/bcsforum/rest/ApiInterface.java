@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.inflack.bcsforum.model.CommitteeDTO;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.model.NewsDTO;
+import com.inflack.bcsforum.model.NotificationDTO;
 import com.inflack.bcsforum.model.UserResponse;
 
 import java.util.List;
@@ -55,5 +56,8 @@ public interface ApiInterface {
 
     @GET("api/settings")
     Call<List<NewsDTO>> getNewsUpdate();
+
+    @GET("api/profileNotification")
+    Call<List<NotificationDTO>> getNotifications(@Query("createdAt") Long createdAt);
 
 }

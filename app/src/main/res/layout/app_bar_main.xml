@@ -32,8 +32,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="20dp"
                     android:layout_toLeftOf="@+id/img_messenger"
-                    android:src="@drawable/ic_notification"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_notification" />
 
                 <ImageView
                     android:id="@+id/img_notification"
@@ -43,7 +43,18 @@
                     android:layout_gravity="center_vertical"
                     android:background="?selectableItemBackground"
                     android:padding="5dp"
-                    android:src="@drawable/ic_notification" />
+                    app:srcCompat="@drawable/ic_notification" />
+
+                <ImageView
+                    android:id="@+id/img_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:background="?selectableItemBackground"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_edit_profile" />
 
             </LinearLayout>
 

@@ -13,7 +13,7 @@ public class Utils {
     public static List<CommitteeDTO> committeeDTOS = new ArrayList<>();
 
     public static void startNotificationActivity(Activity mActivity) {
-        Intent intent = new Intent(mActivity, NotificatonActivity.class);
+        Intent intent = new Intent(mActivity, NotificationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         mActivity.startActivity(intent);
     }

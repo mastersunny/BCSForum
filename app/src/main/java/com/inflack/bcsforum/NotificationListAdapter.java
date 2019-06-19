@@ -3,12 +3,16 @@ package com.inflack.bcsforum;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.inflack.bcsforum.model.MemberDTO;
+import com.inflack.bcsforum.model.NotificationDTO;
+import com.inflack.bcsforum.rest.ApiClient;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.List;
@@ -19,13 +23,13 @@ import butterknife.ButterKnife;
 public class NotificationListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
-    private List<MemberDTO> memberDTOS;
+    private List<NotificationDTO> notificationDTOS;
     private OnItemSelectListener listener;
     private Context context;
 
-    public NotificationListAdapter(Context context, List<MemberDTO> memberDTOS) {
+    public NotificationListAdapter(Context context, List<NotificationDTO> notificationDTOS) {
         this.context = context;
-        this.memberDTOS = memberDTOS;
+        this.notificationDTOS = notificationDTOS;
     }
 
     public interface OnItemSelectListener {
@@ -41,46 +45,33 @@ public class NotificationListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
-        MemberDTO memberDTO = memberDTOS.get(position);
-//        MainHolder mainHolder = (MainHolder) viewHolder;
-//        int res = context.getResources().getIdentifier(context.getPackageName() + ":drawable/" + memberDTOS.get(position).getProfilePicture(), null, null);
-//        mainHolder.img_profile.setImageResource(res);
-//
-//        mainHolder.tv_name.setText(memberDTO.getName());
-//        mainHolder.tv_id_no.setText("পরিচিতি নম্বরঃ " + memberDTOS.get(position).getIdNo());
-//        mainHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (listener != null) {
-//                    listener.onItemSelected(position);
-//                }
-//            }
-//        });
+        NotificationDTO notificationDTO = notificationDTOS.get(position);
+        MainHolder mainHolder = (MainHolder) viewHolder;
+
+        if (!TextUtils.isEmpty(notificationDTO.getImage())) {
+            Glide.with(context).load(ApiClient.BASE_URL + "storage" + "/" + notificationDTO.getImage())
+                    .into(mainHolder.img_profile);
+        }
+        mainHolder.tv_message.setText(notificationDTO.getMessage());
+
     }
 
     @Override
     public int getItemCount() {
-        return memberDTOS == null ? 0 : memberDTOS.size();
+        return notificationDTOS == null ? 0 : notificationDTOS.size();
     }
 
     public static class MainHolder extends RecyclerView.ViewHolder {
 
-//        @BindView(R.id.img_profile)
-//        CircularImageView img_profile;
-//
-//        @BindView(R.id.tv_name)
-//        TextView tv_name;
-//
-//        @BindView(R.id.tv_id_no)
-//        TextView tv_id_no;
+        @BindView(R.id.img_profile)
+        CircularImageView img_profile;
+
+        @BindView(R.id.tv_message)
+        TextView tv_message;
 
         public MainHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-    }
-
-    public void setOnItemSelectListener(OnItemSelectListener listener) {
-        this.listener = listener;
     }
 }
