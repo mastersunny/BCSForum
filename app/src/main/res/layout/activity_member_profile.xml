@@ -28,6 +28,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="?selectableItemBackground"
                 android:padding="5dp"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_notification" />
 
         </android.support.v7.widget.Toolbar>
@@ -37,64 +38,106 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="16dp">
+            android:layout_height="match_parent">
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/profile_info"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/ac_profile_info_height"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="100dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/profile_info_bg"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@id/fl_profile"
+                app:layout_constraintEnd_toEndOf="@id/fl_profile"
+                app:layout_constraintEnd_toStartOf="@id/fl_profile"
+                app:layout_constraintTop_toBottomOf="@id/fl_profile"
+                app:layout_constraintVertical_bias="0.2">
 
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="NAME"
+                    android:text="মনিরুল ইসলাম"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.45" />
 
                 <TextView
-                    android:id="@+id/tv_position"
+                    android:id="@+id/tv_designation1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text=""
+                    android:text="বিপিএম (বার), পিপিএম (বার)"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
+                <TextView
+                    android:id="@+id/tv_designation2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="অতিরিক্ত পুলিশ কমিশনার"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_designation1" />
 
                 <TextView
-                    android:id="@+id/tv_employment"
+                    android:id="@+id/tv_company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text=""
+                    android:text="কাউন্তার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট, ডিএমপি , ঢাকা"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_position" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_designation2" />
+
+                <TextView
+                    android:id="@+id/tv_designation3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="কাউন্তার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট, ডিএমপি , ঢাকা"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_designation2" />
+
+                <TextView
+                    android:id="@+id/tv_designation4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="সভাপতি - ১৫তম বিসিএস ফোরাম"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_designation3" />
 
 
             </android.support.constraint.ConstraintLayout>
@@ -107,6 +150,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 card_view:cardCornerRadius="4dp"
                 card_view:cardElevation="0dp"
                 card_view:layout_constraintTop_toBottomOf="@+id/profile_info">
@@ -117,75 +161,188 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/tv_id_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tv_current_employment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tv_previous_employment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <View
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="16dp" />
-
-                    <TextView
-                        android:id="@+id/tv_district"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_dob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_computer" />
 
-                    <View
+                        <TextView
+                            android:id="@+id/tv_id_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="পরিচিতি নাম্বারঃ .............."
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="16dp" />
-
-                    <TextView
-                        android:id="@+id/tv_phone_no"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:autoLink="phone"
-                        android:text="" />
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_desk" />
 
-                    <TextView
-                        android:id="@+id/tv_blood_group"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/tv_current_employment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="বর্তমান কর্মস্থলঃ .............."
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_place" />
+
+                        <TextView
+                            android:id="@+id/tv_previous_employment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="পূর্বের কর্মস্থলঃ .............."
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_home" />
+
+                        <TextView
+                            android:id="@+id/tv_district"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="নিজ জেলাঃ গোপালগঞ্জ"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_calendar" />
+
+                        <TextView
+                            android:id="@+id/tv_dob"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="জন্ম তারিখঃ ১৬ জুন, ১৯৭০"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_cell_phone" />
+
+                        <TextView
+                            android:id="@+id/tv_phone_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="মোবাইলঃ + ৮৮ ০১৭১৫ ০০১১১৩"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/ic_envelope" />
+
+                        <TextView
+                            android:id="@+id/tv_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="ইমেইলঃ ............."
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_blood_group"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="" />-->
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/img_profile"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                app:layout_constraintBottom_toTopOf="@+id/profile_info"
-                app:layout_constraintEnd_toEndOf="@+id/profile_info"
-                app:layout_constraintStart_toStartOf="@+id/profile_info"
-                app:layout_constraintTop_toTopOf="@+id/profile_info"
-                app:srcCompat="@drawable/ic_user" />
+            <FrameLayout
+                android:id="@+id/fl_profile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circle_white"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_user" />
+
+            </FrameLayout>
+
+
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
