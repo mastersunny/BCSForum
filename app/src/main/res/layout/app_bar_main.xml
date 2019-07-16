@@ -45,16 +45,16 @@
                     android:padding="5dp"
                     app:srcCompat="@drawable/ic_notification" />
 
-                <ImageView
-                    android:id="@+id/img_edit_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"
-                    android:background="?selectableItemBackground"
-                    android:padding="5dp"
-                    app:srcCompat="@drawable/ic_edit_profile" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/img_edit_profile"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:background="?selectableItemBackground"-->
+                    <!--android:padding="5dp"-->
+                    <!--app:srcCompat="@drawable/ic_edit_profile" />-->
 
             </LinearLayout>
 

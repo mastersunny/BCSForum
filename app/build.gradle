@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.inflack.bcsforum"
+        applicationId "com.inflack.bcs15forum"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 7

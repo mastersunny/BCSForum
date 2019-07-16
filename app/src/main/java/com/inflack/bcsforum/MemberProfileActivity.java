@@ -38,11 +38,11 @@ public class MemberProfileActivity extends AppCompatActivity {
     @BindView(R.id.tv_name)
     TextView tv_name;
 
-    @BindView(R.id.tv_position)
-    TextView tv_position;
+//    @BindView(R.id.tv_designation1)
+//    TextView tv_designation1;
 
-    @BindView(R.id.tv_employment)
-    TextView tv_employment;
+//    @BindView(R.id.tv_company)
+//    TextView tv_company;
 
     @BindView(R.id.tv_id_no)
     TextView tv_id_no;
@@ -84,8 +84,8 @@ public class MemberProfileActivity extends AppCompatActivity {
         memberDTO = (MemberDTO) getIntent().getSerializableExtra("MEMBER");
 
         tv_name.setText(memberDTO.getName());
-        tv_position.setText(memberDTO.getDesignation());
-        tv_employment.setText(memberDTO.getCompany());
+//        tv_designation1.setText(memberDTO.getDesignation());
+//        tv_company.setText(memberDTO.getCompany());
         tv_id_no.setText("পরিচিতি নম্বরঃ " + memberDTO.getIdNo());
         tv_current_employment.setText("বর্তমান কর্মস্থলঃ " + memberDTO.getCurrentEmployment());
         tv_previous_employment.setText("পূর্বের কর্মস্থলঃ " + memberDTO.getPreviousEmployment());

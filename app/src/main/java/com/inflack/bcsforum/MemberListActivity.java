@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.inflack.bcsforum.model.CategoryDTO;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.rest.ApiClient;
 import com.inflack.bcsforum.rest.ApiInterface;
@@ -33,6 +34,8 @@ import retrofit2.Response;
 
 public class MemberListActivity extends AppCompatActivity {
 
+    public static final String TAG = "MemberListActivity";
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -42,12 +45,11 @@ public class MemberListActivity extends AppCompatActivity {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-    MemberListAdapter memberListAdapter;
-
-    List<MemberDTO> memberDTOS = new ArrayList<>();
-    List<MemberDTO> memberDTOSCopy = new ArrayList<>();
-
+    private MemberListAdapter memberListAdapter;
+    private List<MemberDTO> memberDTOS = new ArrayList<>();
+    private List<MemberDTO> memberDTOSCopy = new ArrayList<>();
     private ApiInterface apiInterface;
+    private CategoryDTO categoryDTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,12 @@ public class MemberListActivity extends AppCompatActivity {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
+        getIntentData();
         initLayout();
+    }
+
+    private void getIntentData() {
+        categoryDTO = (CategoryDTO) getIntent().getSerializableExtra(CategoryDTO.TAG);
     }
 
     @Override
@@ -72,11 +79,11 @@ public class MemberListActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         memberDTOS.clear();
         memberDTOSCopy.clear();
-        apiInterface.getMembers().enqueue(new Callback<List<MemberDTO>>() {
+        apiInterface.getMembers(categoryDTO.getCategoryId()).enqueue(new Callback<List<MemberDTO>>() {
             @Override
             public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
                 progressBar.setVisibility(View.GONE);
-//                Log.d(TAG, response + "");
+                Constants.debugLog(TAG, response + "");
                 if (response != null && response.isSuccessful()) {
                     memberDTOS.addAll(response.body());
                     memberDTOSCopy.addAll(memberDTOS);
@@ -125,7 +132,7 @@ public class MemberListActivity extends AppCompatActivity {
 
     private void initLayout() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("সদস্যগনের নামের তালিকা");
+        getSupportActionBar().setTitle(categoryDTO.getName());
         toolbar.setNavigationIcon(R.drawable.ic_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

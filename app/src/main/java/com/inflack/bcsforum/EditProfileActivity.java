@@ -125,11 +125,12 @@ public class EditProfileActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_logout:
-                MemberDTO.deleteAll(MemberDTO.class);
-                Intent intent = new Intent(EditProfileActivity.this, SplashActivity2.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+//                MemberDTO.deleteAll(MemberDTO.class);
+//                Intent intent = new Intent(EditProfileActivity.this, SplashActivity2.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//                finish();
+                Constants.logOut(EditProfileActivity.this);
                 break;
             case R.id.img_choose_photo:
                 requestPermission();
@@ -138,7 +139,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 Utils.startNotificationActivity(EditProfileActivity.this);
                 break;
             case R.id.img_edit_name:
-                intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
+                Intent intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
                 intent.putExtra(EditProfileActivity2.NAME, true);
                 intent.putExtra(MemberDTO.TAG, memberDTO);
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);

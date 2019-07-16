@@ -3,6 +3,7 @@ package com.inflack.bcsforum.rest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
+import com.inflack.bcsforum.model.CategoryDTO;
 import com.inflack.bcsforum.model.CommitteeDTO;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.model.NewsDTO;
@@ -28,8 +29,11 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @GET("api/contacts")
-    Call<List<MemberDTO>> getMembers();
+    @GET("api/api/profiles")
+    Call<List<MemberDTO>> getMembers(@Query("category_id") int categoryId);
+
+    @GET("api/categories")
+    Call<List<CategoryDTO>> getCategories();
 
     @GET("api/committeenforums")
     Call<List<CommitteeDTO>> getCommitteeForums();

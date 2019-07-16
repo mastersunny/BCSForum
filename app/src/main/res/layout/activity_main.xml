@@ -55,7 +55,7 @@
                 android:visibility="gone" />
 
             <LinearLayout
-                android:id="@+id/nav_member_name"
+                android:id="@+id/nav_cadre_cetegory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -75,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="সদস্যগণের নামের তালিকা"
+                    android:text="@string/left_menu_cadre"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/forum_committee"
+                    android:text="@string/left_menu_forum_committee"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -129,11 +129,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/forum_structure"
+                    android:text="@string/left_menu_forum_structure"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/colorPrimary"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/text_logout"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,6 +168,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ডেভেলপঃ"
+                        android:textColor="@android:color/black"
                         android:textSize="10sp" />
 
                     <ImageView
@@ -201,6 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="উদ্যেক্তাঃ"
+                        android:textColor="@android:color/black"
                         android:textSize="10sp" />
 
                     <TextView

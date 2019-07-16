@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="মনিরুল ইসলাম"
+                    android:text="@string/president_name"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text="বিপিএম (বার), পিপিএম (বার)"
+                    android:text="@string/president_designation1"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,25 +95,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
-                    android:text="অতিরিক্ত পুলিশ কমিশনার"
+                    android:text="@string/president_designation2"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_designation1" />
-
-                <TextView
-                    android:id="@+id/tv_company"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:text="কাউন্তার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট, ডিএমপি , ঢাকা"
-                    android:textColor="@android:color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_designation2" />
 
                 <TextView
                     android:id="@+id/tv_designation3"
@@ -121,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text="কাউন্তার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট, ডিএমপি , ঢাকা"
+                    android:text="@string/president_designation3"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
-                    android:text="সভাপতি - ১৫তম বিসিএস ফোরাম"
+                    android:text="@string/president_designation4"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -314,11 +302,12 @@
 
                     </LinearLayout>
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/tv_blood_group"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="" />-->
+                    <TextView
+                        android:id="@+id/tv_blood_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:visibility="gone" />
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
@@ -338,7 +327,7 @@
                     android:id="@+id/img_profile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/ic_user" />
+                    app:srcCompat="@drawable/monirul" />
 
             </FrameLayout>
 

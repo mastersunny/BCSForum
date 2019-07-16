@@ -26,7 +26,8 @@
                 android:layout_gravity="end"
                 android:background="?selectableItemBackground"
                 android:padding="5dp"
-                android:src="@drawable/ic_notification" />
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_notification" />
 
         </android.support.v7.widget.Toolbar>
 

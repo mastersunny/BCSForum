@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">22nd BCS Admin Forum</string>
+    <string name="app_name">15th BCS Forum</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -11,7 +11,15 @@
     <string name="FACEBOOK_APP_ID">377013812891228</string>
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">242c0ef5b321bacc14a41618356f03d3</string>
 
-    <string name="forum_committee">ফোরাম কমিটির তালিকা</string>
-    <string name="forum_structure">ফোরামের গঠনতন্ত্র</string>
+    <string name="left_menu_cadre">ক্যাডারের নামের তালিকা</string>
+    <string name="left_menu_forum_committee">ফোরাম কমিটির তালিকা</string>
+    <string name="left_menu_forum_structure">ফোরামের গঠনতন্ত্র</string>
+
+    <string name="president_name">মনিরুল ইসলাম</string>
+    <string name="president_designation1">বিপিএম (বার), পিপিএম (বার)</string>
+    <string name="president_designation2">অতিরিক্ত পুলিশ কমিশনার</string>
+    <string name="president_designation3">কাউন্টার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট\nডিএমপি, ঢাকা</string>
+    <string name="president_designation4">সভাপতি - ১৫তম বিসিএস ফোরাম</string>
+    <string name="text_logout">লগ আউট</string>
 
 </resources>

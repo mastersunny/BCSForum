@@ -12,22 +12,20 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-
     <RelativeLayout
         android:id="@+id/top_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--<ImageView-->
-            <!--android:id="@+id/img_edit_profile"-->
-            <!--android:layout_width="32dp"-->
-            <!--android:layout_height="32dp"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--android:layout_alignParentEnd="true"-->
-            <!--android:background="?selectableItemBackground"-->
-            <!--android:padding="5dp"-->
-            <!--app:srcCompat="@drawable/ic_edit"-->
-            <!--android:visibility="invisible" />-->
+        <ImageView
+            android:id="@+id/img_edit_profile"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_edit" />
 
         <ImageView
             android:id="@+id/img_close_drawer"
@@ -37,7 +35,7 @@
             android:layout_alignParentTop="true"
             android:background="?selectableItemBackground"
             android:padding="5dp"
-            android:src="@drawable/ic_cross" />
+            app:srcCompat="@drawable/ic_cross" />
 
     </RelativeLayout>
 
@@ -54,23 +52,31 @@
             android:id="@+id/img_profile"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            app:srcCompat="@drawable/nishat" />
+            app:srcCompat="@drawable/monirul" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="কাজী নিশাত রসুল"
+            android:text="@string/president_name"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/president_designation1"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:text="মাননীয় প্রধানমন্ত্রীর সহকারী একান্ত সচিব (উপ-সচিব),"
+            android:layout_marginTop="16dp"
+            android:text="@string/president_designation2"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
@@ -79,7 +85,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="প্রধানমন্ত্রীর কার্যালয়"
+            android:gravity="center"
+            android:text="@string/president_designation3"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
@@ -87,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="সভাপতি-২২তম বিসিএস ফোরাম"
+            android:text="@string/president_designation4"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 

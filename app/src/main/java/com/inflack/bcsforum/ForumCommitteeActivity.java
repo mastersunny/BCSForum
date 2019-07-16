@@ -1,14 +1,10 @@
 package com.inflack.bcsforum;
 
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 import com.inflack.bcsforum.model.CommitteeDTO;
 import com.inflack.bcsforum.rest.ApiClient;
@@ -66,8 +62,8 @@ public class ForumCommitteeActivity extends AppCompatActivity {
 
     private void initLayout() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(category.equals("committee") ? getResources().getString(R.string.forum_committee) :
-                getResources().getString(R.string.forum_structure));
+        getSupportActionBar().setTitle(category.equals("committee") ? getResources().getString(R.string.left_menu_forum_committee) :
+                getResources().getString(R.string.left_menu_forum_structure));
         toolbar.setNavigationIcon(R.drawable.ic_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

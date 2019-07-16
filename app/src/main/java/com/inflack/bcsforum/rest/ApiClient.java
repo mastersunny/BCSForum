@@ -15,7 +15,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class ApiClient {
     public static String TAG = "ApiClient";
 
-    public static String serverUrl = "http://bcs.inflack.net/";
+    public static String serverUrl = "http://bcs15.inflack.net/";
     public static final String BASE_URL = serverUrl;
 
     private static Retrofit retrofit = null;

@@ -3,14 +3,12 @@ package com.inflack.bcsforum;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.FrameLayout;
-import android.widget.ListView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.inflack.bcsforum.model.MemberDTO;
@@ -118,15 +116,15 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        ListView rvNumbers = (ListView) findViewById(R.id.list);
-        findViewById(R.id.nav_member_name).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MemberListActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-            }
-        });
+//        ListView rvNumbers = (ListView) findViewById(R.id.list);
+//        findViewById(R.id.nav_cadre_cetegory).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, MemberListActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                startActivity(intent);
+//            }
+//        });
 
 //        show_dialog_layout.setClickable(true);
 
@@ -181,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initLayout() {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("২২ তম বিসিএস (এডমিন) ফোরাম");
+        getSupportActionBar().setTitle("১৫ তম বিসিএস ফোরাম");
 
         MarqueeText.setSelected(true);
 
@@ -229,23 +227,33 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R.id.img_edit_profile,
             R.id.img_notification,
+            R.id.nav_cadre_cetegory,
             R.id.nav_forum_committee,
             R.id.nav_forum_structure,
             R.id.img_close_drawer,
-            R.id.btn_member_list})
+            R.id.btn_member_list,
+            R.id.btn_logout})
     public void onClick(View v) {
         switch (v.getId()) {
 //            case R.id.show_dialog_layout:
 //                CustomDialog customDialog = new CustomDialog(MainActivity.this);
 //                customDialog.show();
 //                break;
+            case R.id.nav_cadre_cetegory:
+                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case R.id.btn_logout:
+                Constants.logOut(MainActivity.this);
+                break;
             case R.id.img_edit_profile:
                 closeDrawer();
-                Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
+                intent = new Intent(MainActivity.this, EditProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_member_list:
-                intent = new Intent(MainActivity.this, MemberListActivity.class);
+                intent = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(intent);
                 break;
             case R.id.img_notification:
