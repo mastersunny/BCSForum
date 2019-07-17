@@ -29,7 +29,7 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
-    @GET("api/api/profiles")
+    @GET("api/profiles")
     Call<List<MemberDTO>> getMembers(@Query("category_id") int categoryId);
 
     @GET("api/categories")

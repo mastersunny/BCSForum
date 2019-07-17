@@ -100,34 +100,6 @@ public class MemberListActivity extends AppCompatActivity {
                 Toasty.error(MemberListActivity.this, "Could not fetch data", Toast.LENGTH_SHORT, true).show();
             }
         });
-
-
-//        memberDTOS.add(new MemberDTO("মোহাম্মদ আব্দুল হাই","প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)","স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট", "১৫৪১৫","তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ","নির্বাচন কমিশন, বাংলাদেশ","ফেনী","০১ জুলাই, ১৯৭৬","+৮৮০১৯২১৬৯১৮৭৮","hye22bcs@gmail.com","B+", "abdul"));
-//        memberDTOS.add(new MemberDTO("মোহাাম্মদ মমিনুর রহমান", "পরিচালক (উপ-সচিব)","প্রধানমন্ত্রীর কার্যালয়","১৫২০২","প্রধানমন্ত্রীর কার্যালয় ","","ময়মনসিংহ","০১ সেপ্টেম্বর, ১৯৭৩", "+৮৮০১৭১১২৬৯৮৬১","ominur15202@yahoo.com","A+","abdul"));
-//        memberDTOS.add(new MemberDTO("আ ফ ম ফজলে রাব্বী","প্রথম সচিব, বাংলাদেশ হাই কমিশন", "বাংলাদেশ হাই কমিশন","১৫২০৩","যুক্তরাজ্য","","লক্ষ্মীপুর","০৪ আগষ্ট, ১৯৭২","+৪৪৭৪৫৯৫৪৫১৭৭","rabbi15203@gmail.com","B+", "abdul"));
-//        memberDTOS.add(new MemberDTO("কাজী নিশাত রসুল","মাননীয় প্রধানমন্ত্রীর সহকারী একান্ত সচিব (উপ-সচিব)","প্রধানমন্ত্রীর কার্যালয়", "১৫৩২৫", "প্রধানমন্ত্রীর কার্যালয়","","নোয়াখালী","০১ জানুয়ারী","+৮৮০১৭০৮১৩৩২১২","nishat15325@gmail.com","B+", "abida"));
-//        memberDTOS.add(new MemberDTO("ড. আশরাফুল আলম","উপ-সচিব","মন্ত্রীপরিষদ বিভাগ ", "১৫২০৪","মন্ত্রীপরিষদ বিভাগ","","কিশোরগঞ্জ","০১ জানুয়ারী, ১৯৭৫","+৮৮০১৭১১০৩০৩৯১১","ashraful851@gmail.com","B+", "abdul"));
-
-//        memberDTOSCopy.addAll(memberDTOS);
-
-
-//        for (int i = 0; i < 20; i++) {
-//            MemberDTO memberDTO = new MemberDTO();
-//            memberDTO.setName("Name");
-//            if (i % 2 == 0) {
-//                memberDTO.setProfilePicture("abdul");
-//            } else {
-//                memberDTO.setProfilePicture("abida");
-//            }
-//            memberDTO.setId(12121212);
-//
-//            memberDTOS.add(memberDTO);
-//            memberDTOSCopy.add(memberDTO);
-//        }
-
-//        if (memberListAdapter != null) {
-//            memberListAdapter.notifyDataSetChanged();
-//        }
     }
 
     private void initLayout() {

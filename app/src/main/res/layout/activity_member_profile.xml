@@ -91,7 +91,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
                 <TextView
-                    android:id="@+id/tv_designation2"
+                    android:id="@+id/tv_company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -111,9 +111,10 @@
                     android:gravity="center"
                     android:text="@string/president_designation3"
                     android:textColor="@android:color/black"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_designation2" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_company" />
 
                 <TextView
                     android:id="@+id/tv_designation4"
@@ -123,6 +124,7 @@
                     android:gravity="center"
                     android:text="@string/president_designation4"
                     android:textColor="@android:color/black"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_designation3" />
