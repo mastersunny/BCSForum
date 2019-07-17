@@ -73,6 +73,8 @@ public class EditProfileActivity2 extends AppCompatActivity {
 
     public static final String NAME = "name";
     public static final String OTHER_INFO = "other_info";
+    public static final String PHONE = "phone";
+    public static final String EMAIL = "email";
 
     ApiInterface apiInterface;
 
@@ -104,17 +106,21 @@ public class EditProfileActivity2 extends AppCompatActivity {
             Constants.debugLog(TAG, e.getMessage());
         }
 
+        edt_name_layout.setVisibility(View.GONE);
+        edt_designation_layout.setVisibility(View.GONE);
+        edt_company_layout.setVisibility(View.GONE);
+        edt_phone_layout.setVisibility(View.GONE);
+        edt_email_layout.setVisibility(View.GONE);
+
+
         if (intent.hasExtra(NAME)) {
             edt_name_layout.setVisibility(View.VISIBLE);
-            edt_designation_layout.setVisibility(View.GONE);
-            edt_company_layout.setVisibility(View.GONE);
-            edt_phone_layout.setVisibility(View.GONE);
-            edt_email_layout.setVisibility(View.GONE);
         } else if (intent.hasExtra(OTHER_INFO)) {
-            edt_name_layout.setVisibility(View.GONE);
             edt_designation_layout.setVisibility(View.VISIBLE);
             edt_company_layout.setVisibility(View.VISIBLE);
+        } else if (intent.hasExtra(PHONE)) {
             edt_phone_layout.setVisibility(View.VISIBLE);
+        } else if (intent.hasExtra(EMAIL)) {
             edt_email_layout.setVisibility(View.VISIBLE);
         }
     }

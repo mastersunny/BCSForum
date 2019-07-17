@@ -105,8 +105,8 @@ public class EditProfileActivity extends AppCompatActivity {
             tv_name.setText(memberDTO.getName());
             tv_designation.setText(memberDTO.getDesignation());
             tv_company.setText(memberDTO.getCompany());
-            tv_phone_no.setText(memberDTO.getPhoneNo());
-            tv_email.setText(memberDTO.getEmail());
+            tv_phone_no.setText("মোবাইলঃ " + memberDTO.getPhoneNo());
+            tv_email.setText("ই-মেইলঃ " + memberDTO.getEmail());
             Constants.debugLog(TAG, memberDTO.getProfilePicture());
             if (memberDTO.getProfilePicture() != null) {
                 Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture())
@@ -121,7 +121,8 @@ public class EditProfileActivity extends AppCompatActivity {
         return true;
     }
 
-    @OnClick({R.id.btn_logout, R.id.img_notification, R.id.img_choose_photo, R.id.img_edit_name, R.id.img_edit_desig})
+    @OnClick({R.id.btn_logout, R.id.img_notification, R.id.img_choose_photo, R.id.img_edit_name, R.id.img_edit_desig,
+            R.id.img_edit_phone, R.id.img_edit_email})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_logout:
@@ -147,6 +148,18 @@ public class EditProfileActivity extends AppCompatActivity {
             case R.id.img_edit_desig:
                 intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
                 intent.putExtra(EditProfileActivity2.OTHER_INFO, true);
+                intent.putExtra(MemberDTO.TAG, memberDTO);
+                startActivityForResult(intent, UPDATE_PROFILE_INFO);
+                break;
+            case R.id.img_edit_phone:
+                intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
+                intent.putExtra(EditProfileActivity2.PHONE, true);
+                intent.putExtra(MemberDTO.TAG, memberDTO);
+                startActivityForResult(intent, UPDATE_PROFILE_INFO);
+                break;
+            case R.id.img_edit_email:
+                intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
+                intent.putExtra(EditProfileActivity2.EMAIL, true);
                 intent.putExtra(MemberDTO.TAG, memberDTO);
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);
                 break;
