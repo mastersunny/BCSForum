@@ -329,7 +329,7 @@
                     android:id="@+id/img_profile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:srcCompat="@drawable/monirul" />
+                    app:srcCompat="@drawable/ic_avatar" />
 
             </FrameLayout>
 
