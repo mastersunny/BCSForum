@@ -75,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/left_menu_cadre"
+                    android:text="@string/left_menu_cadre_division"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -223,7 +223,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="মোহাম্মদ আব্দুল হাই, পি এ এ"
+                        android:text="ব্যারিস্টার মোঃ গোলাম সরওার ভুঁইয়া"
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
@@ -239,7 +239,21 @@
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট"
+                        android:text="হাই-টেক পার্কের জন্য মৌলিক অবকাঠামো (সিলেট প্রকল্প)"
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="বাংলাদেশ হাই-টেক পার্ক কর্তৃপক্ষ"
+                        android:textColor="@android:color/black"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ"
                         android:textColor="@android:color/black"
                         android:textSize="10sp" />
 
