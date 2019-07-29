@@ -102,7 +102,7 @@
                 android:paddingBottom="16dp"
                 android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:text="২২তম বিসিএস (প্রশাসন) ফোরামের ইফতার মাহফিল ১৬ মে,২০১৯ খ্রি: তারিখে বিসিএস( প্রশাসন) একাডেমীতে অনুষ্ঠিত হবে । সবাইকে স্বপরিবারে নিমন্ত্রণ জানাই । সভাপতি  ও সেক্রেটারি,  ২২তম বিসিএস (প্রশাসন) ফোরাম।"
+                android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 

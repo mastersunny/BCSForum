@@ -223,7 +223,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ব্যারিস্টার মোঃ গোলাম সরওার ভুঁইয়া"
+                        android:text="ব্যারিস্টার মোঃ গোলাম সরওয়ার ভুঁইয়া"
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
