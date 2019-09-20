@@ -167,7 +167,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="পরিচিতি নাম্বারঃ .............."
+                            android:text="@string/txt_id_no"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -189,7 +189,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="বর্তমান কর্মস্থলঃ .............."
+                            android:text="@string/txt_current_employment"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -211,7 +211,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="পূর্বের কর্মস্থলঃ .............."
+                            android:text="@string/txt_previous_employment"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -233,7 +233,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="নিজ জেলাঃ গোপালগঞ্জ"
+                            android:text="@string/txt_district"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -255,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="জন্ম তারিখঃ ১৬ জুন, ১৯৭০"
+                            android:text="@string/txt_dob"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -277,7 +277,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="মোবাইলঃ + ৮৮ ০১৭১৫ ০০১১১৩"
+                            android:text="@string/txt_phone_no"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -299,7 +299,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="16dp"
-                            android:text="ইমেইলঃ ............."
+                            android:text="@string/txt_email"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>

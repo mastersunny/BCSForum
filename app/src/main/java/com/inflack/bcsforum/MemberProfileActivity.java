@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.view.View;
 import android.widget.TextView;
@@ -83,18 +84,49 @@ public class MemberProfileActivity extends AppCompatActivity {
     private void getIntentData() {
         memberDTO = (MemberDTO) getIntent().getSerializableExtra("MEMBER");
 
-        tv_name.setText(memberDTO.getName());
-        tv_designation1.setText(memberDTO.getDesignation());
-        tv_company.setText(memberDTO.getCompany());
-        tv_id_no.setText("পরিচিতি নম্বরঃ " + memberDTO.getIdNo());
-        tv_current_employment.setText("বর্তমান কর্মস্থলঃ " + memberDTO.getCurrentEmployment());
-        tv_previous_employment.setText("পূর্বের কর্মস্থলঃ " + memberDTO.getPreviousEmployment());
-        tv_district.setText("নিজ জেলাঃ " + memberDTO.getDistrict());
-        tv_dob.setText("জন্ম তারিখঃ " + memberDTO.getDateOfBirth());
-        tv_phone_no.setText("মোবাইলঃ " + memberDTO.getPhoneNo());
-        tv_email.setText("ই-মেইলঃ " + memberDTO.getEmail());
-        tv_blood_group.setText("রক্তের গ্রুপঃ " + memberDTO.getBloodGroup());
+        if (!TextUtils.isEmpty(memberDTO.getName())) {
+            tv_name.setText(memberDTO.getName());
+        }
 
+        if (!TextUtils.isEmpty(memberDTO.getDesignation())) {
+            tv_designation1.setText(memberDTO.getDesignation());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getCompany())) {
+            tv_company.setText(memberDTO.getCompany());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getIdNo())) {
+            tv_id_no.setText("পরিচিতি নম্বরঃ " + memberDTO.getIdNo());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getCurrentEmployment())) {
+            tv_current_employment.setText("বর্তমান কর্মস্থলঃ " + memberDTO.getCurrentEmployment());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getPreviousEmployment())) {
+            tv_previous_employment.setText("পূর্বের কর্মস্থলঃ " + memberDTO.getPreviousEmployment());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getDistrict())) {
+            tv_district.setText("নিজ জেলাঃ " + memberDTO.getDistrict());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getDateOfBirth())) {
+            tv_dob.setText("জন্ম তারিখঃ " + memberDTO.getDateOfBirth());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getPhoneNo())) {
+            tv_phone_no.setText("মোবাইলঃ " + memberDTO.getPhoneNo());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getEmail())) {
+            tv_email.setText("ই-মেইলঃ " + memberDTO.getEmail());
+        }
+
+        if (!TextUtils.isEmpty(memberDTO.getBloodGroup())) {
+            tv_blood_group.setText("রক্তের গ্রুপঃ " + memberDTO.getBloodGroup());
+        }
 
         Linkify.addLinks(tv_phone_no, Linkify.PHONE_NUMBERS);
         Linkify.addLinks(tv_email, Linkify.EMAIL_ADDRESSES);

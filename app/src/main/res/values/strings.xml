@@ -23,4 +23,11 @@
     <string name="president_designation4">সভাপতি - ১৫তম বিসিএস ফোরাম</string>
     <string name="text_logout">লগ আউট</string>
 
+    <string name="txt_id_no">পরিচিতি নাম্বারঃ ..............</string>
+    <string name="txt_current_employment">বর্তমান কর্মস্থলঃ ..............</string>
+    <string name="txt_previous_employment">পূর্বের কর্মস্থলঃ ..............</string>
+    <string name="txt_district">নিজ জেলাঃ ..............</string>
+    <string name="txt_dob">জন্ম তারিখঃ ..............</string>
+    <string name="txt_phone_no">মোবাইলঃ ..............</string>
+    <string name="txt_email">ইমেইলঃ .............</string>
 </resources>
