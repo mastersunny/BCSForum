@@ -22,6 +22,7 @@
     <string name="president_designation3">কাউন্টার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট\nডিএমপি, ঢাকা</string>
     <string name="president_designation4">সভাপতি - ১৫তম বিসিএস ফোরাম</string>
     <string name="text_logout">লগ আউট</string>
+    <string name="txt_profile_edit">প্রোফাইল এডিট করুন</string>
 
     <string name="txt_id_no">পরিচিতি নাম্বারঃ ..............</string>
     <string name="txt_current_employment">বর্তমান কর্মস্থলঃ ..............</string>

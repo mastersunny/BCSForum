@@ -25,6 +25,7 @@
             android:layout_alignParentEnd="true"
             android:background="?selectableItemBackground"
             android:padding="5dp"
+            android:visibility="invisible"
             app:srcCompat="@drawable/ic_edit" />
 
         <ImageView

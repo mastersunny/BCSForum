@@ -75,6 +75,7 @@ public class EditProfileActivity2 extends AppCompatActivity {
     public static final String OTHER_INFO = "other_info";
     public static final String PHONE = "phone";
     public static final String EMAIL = "email";
+    public static final String ALL_INFO_UPDATE = "all_info_update";
 
     ApiInterface apiInterface;
 
@@ -106,23 +107,31 @@ public class EditProfileActivity2 extends AppCompatActivity {
             Constants.debugLog(TAG, e.getMessage());
         }
 
-        edt_name_layout.setVisibility(View.GONE);
-        edt_designation_layout.setVisibility(View.GONE);
-        edt_company_layout.setVisibility(View.GONE);
-        edt_phone_layout.setVisibility(View.GONE);
-        edt_email_layout.setVisibility(View.GONE);
-
-
-        if (intent.hasExtra(NAME)) {
+        if (intent.hasExtra(ALL_INFO_UPDATE)) {
             edt_name_layout.setVisibility(View.VISIBLE);
-        } else if (intent.hasExtra(OTHER_INFO)) {
             edt_designation_layout.setVisibility(View.VISIBLE);
             edt_company_layout.setVisibility(View.VISIBLE);
-        } else if (intent.hasExtra(PHONE)) {
             edt_phone_layout.setVisibility(View.VISIBLE);
-        } else if (intent.hasExtra(EMAIL)) {
             edt_email_layout.setVisibility(View.VISIBLE);
+        } else {
+            edt_name_layout.setVisibility(View.GONE);
+            edt_designation_layout.setVisibility(View.GONE);
+            edt_company_layout.setVisibility(View.GONE);
+            edt_phone_layout.setVisibility(View.GONE);
+            edt_email_layout.setVisibility(View.GONE);
+
+            if (intent.hasExtra(NAME)) {
+                edt_name_layout.setVisibility(View.VISIBLE);
+            } else if (intent.hasExtra(OTHER_INFO)) {
+                edt_designation_layout.setVisibility(View.VISIBLE);
+                edt_company_layout.setVisibility(View.VISIBLE);
+            } else if (intent.hasExtra(PHONE)) {
+                edt_phone_layout.setVisibility(View.VISIBLE);
+            } else if (intent.hasExtra(EMAIL)) {
+                edt_email_layout.setVisibility(View.VISIBLE);
+            }
         }
+
     }
 
     private void initLayout() {
@@ -144,11 +153,6 @@ public class EditProfileActivity2 extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_update:
                 editProfile();
-//                Intent intent = new Intent();
-//                intent.putExtra("OK", "");
-//                setResult(RESULT_OK, intent);
-//                Toasty.success(EditProfileActivity2.this, "Profile updated successfully!", Toast.LENGTH_SHORT, true).show();
-//                finish();
                 break;
         }
     }

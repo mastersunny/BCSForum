@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="মোহাম্মদ আব্দুল হাই, পি এ এ"
+                    android:text=""
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -130,6 +130,7 @@
                 android:layout_marginStart="10dp"
                 android:background="?attr/selectableItemBackground"
                 android:padding="5dp"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_edit_blue" />
 
         </LinearLayout>
@@ -160,7 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/president_designation2"
+                    android:text=""
                     android:textColor="@android:color/black" />
 
                 <TextView
@@ -170,12 +171,13 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:text="@string/president_designation3"
+                    android:text=""
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
 
             <ImageView
+
                 android:id="@+id/img_edit_desig"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -185,6 +187,7 @@
                 android:layout_marginStart="10dp"
                 android:background="?attr/selectableItemBackground"
                 android:padding="5dp"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_edit_blue" />
 
         </LinearLayout>
@@ -221,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
-                    android:text="মোবাইলঃ + ৮৮ ০১৭১৫ ০০১১১৩"
+                    android:text="@string/txt_phone_no"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
@@ -234,6 +237,7 @@
                 android:layout_marginStart="10dp"
                 android:background="?attr/selectableItemBackground"
                 android:padding="5dp"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_edit_blue" />
 
         </LinearLayout>
@@ -271,7 +275,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
-                    android:text="ইমেইলঃ ............."
+                    android:text="@string/txt_email"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
@@ -286,6 +290,7 @@
                 android:layout_marginStart="10dp"
                 android:background="?attr/selectableItemBackground"
                 android:padding="5dp"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_edit_blue" />
 
         </LinearLayout>
@@ -301,6 +306,46 @@
             app:layout_constraintTop_toTopOf="@id/img_profile"
             app:layout_constraintVertical_bias="0.8"
             app:srcCompat="@drawable/ic_photo_camera" />
+
+        <LinearLayout
+            android:id="@+id/layout_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/txt_profile_edit"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_edit_blue" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_logout"

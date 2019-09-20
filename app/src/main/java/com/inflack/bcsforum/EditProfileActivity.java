@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -102,13 +103,26 @@ public class EditProfileActivity extends AppCompatActivity {
     private void updateLayout() {
         memberDTO = MemberDTO.getMember();
         if (memberDTO != null) {
-            tv_name.setText(memberDTO.getName());
-            tv_designation.setText(memberDTO.getDesignation());
-            tv_company.setText(memberDTO.getCompany());
-            tv_phone_no.setText("মোবাইলঃ " + memberDTO.getPhoneNo());
-            tv_email.setText("ই-মেইলঃ " + memberDTO.getEmail());
-            Constants.debugLog(TAG, memberDTO.getProfilePicture());
-            if (memberDTO.getProfilePicture() != null) {
+            if (!TextUtils.isEmpty(memberDTO.getName())) {
+                tv_name.setText(memberDTO.getName());
+            }
+            if (!TextUtils.isEmpty(memberDTO.getDesignation())) {
+                tv_designation.setText(memberDTO.getDesignation());
+            }
+
+            if (!TextUtils.isEmpty(memberDTO.getCompany())) {
+                tv_company.setText(memberDTO.getCompany());
+            }
+
+            if (!TextUtils.isEmpty(memberDTO.getPhoneNo())) {
+                tv_phone_no.setText("মোবাইলঃ " + memberDTO.getPhoneNo());
+            }
+
+            if (!TextUtils.isEmpty(memberDTO.getEmail())) {
+                tv_email.setText("ইমেইলঃ " + memberDTO.getEmail());
+            }
+
+            if (!TextUtils.isEmpty(memberDTO.getProfilePicture())) {
                 Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture())
                         .into(img_profile);
             }
@@ -122,15 +136,10 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.btn_logout, R.id.img_notification, R.id.img_choose_photo, R.id.img_edit_name, R.id.img_edit_desig,
-            R.id.img_edit_phone, R.id.img_edit_email})
+            R.id.img_edit_phone, R.id.img_edit_email, R.id.layout_edit_profile})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_logout:
-//                MemberDTO.deleteAll(MemberDTO.class);
-//                Intent intent = new Intent(EditProfileActivity.this, LoginActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//                finish();
                 Constants.logOut(EditProfileActivity.this);
                 break;
             case R.id.img_choose_photo:
@@ -160,6 +169,12 @@ public class EditProfileActivity extends AppCompatActivity {
             case R.id.img_edit_email:
                 intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
                 intent.putExtra(EditProfileActivity2.EMAIL, true);
+                intent.putExtra(MemberDTO.TAG, memberDTO);
+                startActivityForResult(intent, UPDATE_PROFILE_INFO);
+                break;
+            case R.id.layout_edit_profile:
+                intent = new Intent(EditProfileActivity.this, EditProfileActivity2.class);
+                intent.putExtra(EditProfileActivity2.ALL_INFO_UPDATE, true);
                 intent.putExtra(MemberDTO.TAG, memberDTO);
                 startActivityForResult(intent, UPDATE_PROFILE_INFO);
                 break;
