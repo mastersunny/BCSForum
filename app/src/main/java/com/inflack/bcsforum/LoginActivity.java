@@ -5,28 +5,21 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.accountkit.AccessToken;
-import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.model.UserResponse;
 import com.inflack.bcsforum.rest.ApiClient;
 import com.inflack.bcsforum.rest.ApiInterface;
 import com.ornach.richtext.RichEditText;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,9 +29,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SplashActivity2 extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    public String TAG = "SplashActivity2";
+    public String TAG = "LoginActivity";
 
     ApiInterface apiInterface;
 
@@ -51,7 +44,7 @@ public class SplashActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash2);
+        setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -125,10 +118,10 @@ public class SplashActivity2 extends AppCompatActivity {
                         memberDTO.save();
                         goToMyLoggedInActivity();
                     } else {
-                        Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
+                        Toasty.error(LoginActivity.this, "Username or password incorrect").show();
                     }
                 } else {
-                    Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
+                    Toasty.error(LoginActivity.this, "Username or password incorrect").show();
                 }
             }
 
@@ -136,7 +129,7 @@ public class SplashActivity2 extends AppCompatActivity {
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 cancelProgress();
                 Constants.debugLog(TAG, t.getMessage());
-                Toasty.error(SplashActivity2.this, "Username or password incorrect").show();
+                Toasty.error(LoginActivity.this, "Username or password incorrect").show();
             }
         });
     }
@@ -204,7 +197,7 @@ public class SplashActivity2 extends AppCompatActivity {
     }
 
     private void goToMyLoggedInActivity() {
-        Intent intent = new Intent(SplashActivity2.this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

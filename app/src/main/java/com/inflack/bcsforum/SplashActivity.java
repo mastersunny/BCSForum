@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 
-import com.facebook.accountkit.AccessToken;
-import com.facebook.accountkit.AccountKit;
 import com.inflack.bcsforum.model.MemberDTO;
 
 import butterknife.BindView;
@@ -60,7 +58,7 @@ public class SplashActivity extends AppCompatActivity {
                 //Handle Returning User
                 goToMyLoggedInActivity();
             } else {
-                Intent intent = new Intent(SplashActivity.this, SplashActivity2.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

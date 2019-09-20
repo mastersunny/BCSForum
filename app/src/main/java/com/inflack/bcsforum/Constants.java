@@ -1,7 +1,6 @@
 package com.inflack.bcsforum;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 import android.util.Log;
@@ -40,7 +39,7 @@ public class Constants {
 
     public static void logOut(Activity mActivity) {
         MemberDTO.deleteAll(MemberDTO.class);
-        Intent intent = new Intent(mActivity, SplashActivity2.class);
+        Intent intent = new Intent(mActivity, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         mActivity.startActivity(intent);
         mActivity.finish();

@@ -127,7 +127,7 @@ public class EditProfileActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_logout:
 //                MemberDTO.deleteAll(MemberDTO.class);
-//                Intent intent = new Intent(EditProfileActivity.this, SplashActivity2.class);
+//                Intent intent = new Intent(EditProfileActivity.this, LoginActivity.class);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                startActivity(intent);
 //                finish();
