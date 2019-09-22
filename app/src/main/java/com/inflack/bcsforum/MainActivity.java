@@ -226,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     @OnClick({R.id.img_edit_profile,
+            R.id.img_edit_profile_home,
             R.id.img_notification,
             R.id.nav_cadre_cetegory,
             R.id.nav_forum_committee,
@@ -247,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_logout:
                 Constants.logOut(MainActivity.this);
                 break;
+            case R.id.img_edit_profile_home:
             case R.id.img_edit_profile:
                 closeDrawer();
                 intent = new Intent(MainActivity.this, EditProfileActivity.class);

@@ -28,6 +28,8 @@ import butterknife.OnClick;
 
 public class MemberProfileActivity extends AppCompatActivity {
 
+    public static final String TAG = "MemberProfileActivity";
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -150,6 +152,7 @@ public class MemberProfileActivity extends AppCompatActivity {
 
 //        int res = getResources().getIdentifier(getPackageName() + ":drawable/" + memberDTO.getProfilePicture(), null, null);
 //        img_profile.setImageResource(res);
+        Constants.debugLog(TAG, memberDTO.getProfilePicture());
         if (memberDTO.getProfilePicture() != null) {
             Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture())
                     .into(img_profile);
