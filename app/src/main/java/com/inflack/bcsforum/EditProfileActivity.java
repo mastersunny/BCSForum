@@ -122,6 +122,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 tv_email.setText("ইমেইলঃ " + memberDTO.getEmail());
             }
 
+            Constants.debugLog(TAG, memberDTO.getProfilePicture());
             if (!TextUtils.isEmpty(memberDTO.getProfilePicture())) {
                 Glide.with(this).load(ApiClient.BASE_URL + "storage" + "/" + memberDTO.getProfilePicture())
                         .into(img_profile);

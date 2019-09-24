@@ -35,7 +35,7 @@
                     android:layout_toLeftOf="@+id/img_messenger"
                     android:background="?selectableItemBackground"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_avatar" />
+                    app:srcCompat="@drawable/ic_avatar2" />
 
                 <ImageView
                     android:id="@+id/img_notification"
