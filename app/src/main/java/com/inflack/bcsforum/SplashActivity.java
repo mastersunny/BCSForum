@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.inflack.bcsforum.model.MemberDTO;
 
 import butterknife.BindView;
@@ -20,6 +22,9 @@ public class SplashActivity extends AppCompatActivity {
 
     @BindView(R.id.parent_view)
     View parent_view;
+
+    @BindView(R.id.img_logo)
+    ImageView img_logo;
 
     private ObjectAnimator animation;
 
@@ -35,6 +40,14 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initLayout() {
+
+        if (Constants.type == Constants.BCS_22) {
+            Glide.with(this).load(Constants.getImage(this, "ic_logo_22"))
+                    .into(img_logo);
+        } else if (Constants.type == Constants.BCS_15) {
+            Glide.with(this).load(Constants.getImage(this, "ic_logo_15"))
+                    .into(img_logo);
+        }
 
         parent_view.post(new Runnable() {
             @Override

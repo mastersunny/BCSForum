@@ -8,9 +8,11 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
@@ -41,12 +43,24 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.edt_password)
     RichEditText edt_password;
 
+    @BindView(R.id.img_logo)
+    ImageView img_logo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+
+        if (Constants.type == Constants.BCS_22) {
+            Glide.with(this).load(Constants.getImage(this, "ic_logo_22"))
+                    .into(img_logo);
+        } else if (Constants.type == Constants.BCS_15) {
+            Glide.with(this).load(Constants.getImage(this, "ic_logo_15"))
+                    .into(img_logo);
+        }
+
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         edt_password.setOnEditorActionListener(new RichEditText.OnEditorActionListener() {

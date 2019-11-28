@@ -50,52 +50,54 @@
         android:orientation="vertical">
 
         <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/img_profile"
+            android:id="@+id/img_admin_profile"
             android:layout_width="110dp"
             android:layout_height="110dp"
             app:srcCompat="@drawable/monirul" />
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/president_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/president_name"
+            android:text="@string/president_name_15"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/president_designation1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="@string/president_designation1"
+            android:text="@string/president_designation1_15"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_post"
+            android:id="@+id/president_designation2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/president_designation2"
+            android:text="@string/president_designation2_15"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/president_designation3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:gravity="center"
-            android:text="@string/president_designation3"
+            android:text="@string/president_designation3_15"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/president_designation4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="@string/president_designation4"
+            android:text="@string/president_designation4_15"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 

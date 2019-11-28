@@ -9,12 +9,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.inflack.bcsforum.model.MemberDTO;
 import com.inflack.bcsforum.model.NewsDTO;
 import com.inflack.bcsforum.rest.ApiClient;
 import com.inflack.bcsforum.rest.ApiInterface;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.List;
 
@@ -30,15 +33,46 @@ public class MainActivity extends AppCompatActivity {
     public String TAG = "MainActivity";
     Toolbar toolbar;
 
-//    NavigationView navigationView;
-
     DrawerLayout drawer;
-
-//    @BindView(R.id.show_dialog_layout)
-//    FrameLayout show_dialog_layout;
 
     @BindView(R.id.MarqueeText)
     TextView MarqueeText;
+
+    @BindView(R.id.img_logo)
+    ImageView img_logo;
+
+    @BindView(R.id.img_admin_profile)
+    CircularImageView img_admin_profile;
+
+    @BindView(R.id.president_name)
+    TextView president_name;
+
+    @BindView(R.id.president_designation1)
+    TextView president_designation1;
+
+    @BindView(R.id.president_designation2)
+    TextView president_designation2;
+
+    @BindView(R.id.president_designation3)
+    TextView president_designation3;
+
+    @BindView(R.id.president_designation4)
+    TextView president_designation4;
+
+    @BindView(R.id.proposer_name)
+    TextView proposer_name;
+
+    @BindView(R.id.proposer_designation_1)
+    TextView proposer_designation_1;
+
+    @BindView(R.id.proposer_designation_2)
+    TextView proposer_designation_2;
+
+    @BindView(R.id.proposer_designation_3)
+    TextView proposer_designation_3;
+
+    @BindView(R.id.proposer_designation_4)
+    TextView proposer_designation_4;
 
     ApiInterface apiInterface;
 
@@ -48,33 +82,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-////        fab.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-////            }
-////        });
-////
-////        drawer = findViewById(R.id.drawer_layout);
-////        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-////        drawer.addDrawerListener(toggle);
-////        toggle.syncState();
-////
-////        navigationView = (NavigationView) findViewById(R.id.nav_view);
-////        navigationView.setNavigationItemSelectedListener(this);
-////
         initLayout();
         updateUserInfo();
     }
 
     private void updateUserInfo() {
-        MemberDTO memberDTO = MemberDTO.getMember();
         apiInterface.getNewsUpdate().enqueue(new Callback<List<NewsDTO>>() {
             @Override
             public void onResponse(Call<List<NewsDTO>> call, Response<List<NewsDTO>> response) {
@@ -104,94 +119,59 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-//                show_dialog_layout.setClickable(false);
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-//                show_dialog_layout.setClickable(true);
             }
         };
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-//        ListView rvNumbers = (ListView) findViewById(R.id.list);
-//        findViewById(R.id.nav_cadre_cetegory).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, MemberListActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(intent);
-//            }
-//        });
-
-//        show_dialog_layout.setClickable(true);
-
-
-//        String[] numbers = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
-//        ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(this, R.layout.list_item, numbers);
-//        rvNumbers.setAdapter(itemArrayAdapter);
-
     }
-
-//    public class ItemArrayAdapter extends ArrayAdapter<String> {
-//        String[] itemList;
-//        private int listItemLayout;
-//
-//        public ItemArrayAdapter(Context context, int layoutId, String[] itemList) {
-//            super(context, layoutId, itemList);
-//            listItemLayout = layoutId;
-//            this.itemList = itemList;
-//        }
-//
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            int pos = position;
-//            final String item = getItem(pos);
-//
-//            ViewHolder viewHolder;
-//            if (convertView == null) {
-//                viewHolder = new ViewHolder();
-//                LayoutInflater inflater = LayoutInflater.from(getContext());
-//                convertView = inflater.inflate(listItemLayout, parent, false);
-////                viewHolder.item = (TextView) convertView.findViewById(R.id.tv_text);
-//                convertView.setTag(viewHolder);
-//            } else {
-//                viewHolder = (ViewHolder) convertView.getTag();
-//            }
-//
-//            viewHolder.item.setText(item);
-//            viewHolder.item.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                    tvMsg.setText(item);
-//                    drawer.closeDrawer(Gravity.LEFT);
-//                }
-//            });
-//            return convertView;
-//        }
-//
-//        class ViewHolder {
-//            TextView item;
-//        }
-//    }
 
     private void initLayout() {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("১৫ তম বিসিএস ফোরাম");
+        if (Constants.type == Constants.BCS_22) {
+            getSupportActionBar().setTitle(getResources().getString(R.string.bcs_22_name));
+            Glide.with(this).load(Constants.getImage(this, "ic_logo_22"))
+                    .into(img_logo);
+            Glide.with(this).load(Constants.getImage(this, "nishat"))
+                    .into(img_admin_profile);
+            president_name.setText(getResources().getString(R.string.president_name_22));
+            president_designation1.setText(getResources().getString(R.string.president_designation1_22));
+            president_designation2.setText(getResources().getString(R.string.president_designation2_22));
+            president_designation3.setText(getResources().getString(R.string.president_designation3_22));
+            president_designation4.setVisibility(View.GONE);
+
+            proposer_name.setText(getResources().getString(R.string.proposer_name_22));
+            proposer_designation_1.setText(getResources().getString(R.string.proposer_designation1_22));
+            proposer_designation_2.setText(getResources().getString(R.string.proposer_designation2_22));
+            proposer_designation_3.setVisibility(View.GONE);
+            proposer_designation_4.setVisibility(View.GONE);
+
+        } else if (Constants.type == Constants.BCS_15) {
+            getSupportActionBar().setTitle(getResources().getString(R.string.bcs_15_name));
+            Glide.with(this).load(Constants.getImage(this, "ic_logo_15"))
+                    .into(img_logo);
+            Glide.with(this).load(Constants.getImage(this, "monirul"))
+                    .into(img_admin_profile);
+            president_name.setText(getResources().getString(R.string.president_name_15));
+            president_designation1.setText(getResources().getString(R.string.president_designation1_15));
+            president_designation2.setText(getResources().getString(R.string.president_designation2_15));
+            president_designation3.setText(getResources().getString(R.string.president_designation3_15));
+            president_designation4.setText(getResources().getString(R.string.president_designation4_15));
+
+            proposer_name.setText(getResources().getString(R.string.proposer_name_15));
+            proposer_designation_1.setText(getResources().getString(R.string.proposer_designation1_15));
+            proposer_designation_2.setText(getResources().getString(R.string.proposer_designation2_15));
+            proposer_designation_3.setText(getResources().getString(R.string.proposer_designation3_15));
+            proposer_designation_4.setText(getResources().getString(R.string.proposer_designation4_15));
+
+
+        }
 
         MarqueeText.setSelected(true);
-
-//        View view = navigationView.getHeaderView(0);
-//        view.findViewById(R.id.img_close_drawer).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (drawer.isDrawerOpen(GravityCompat.START)) {
-//                    drawer.closeDrawer(GravityCompat.START);
-//                }
-//            }
-//        });
     }
 
     @Override
@@ -202,28 +182,6 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @OnClick({R.id.img_edit_profile,
             R.id.img_edit_profile_home,
@@ -236,14 +194,17 @@ public class MainActivity extends AppCompatActivity {
             R.id.btn_logout})
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.show_dialog_layout:
-//                CustomDialog customDialog = new CustomDialog(MainActivity.this);
-//                customDialog.show();
-//                break;
             case R.id.nav_cadre_cetegory:
-                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
+                Intent intent;
+                if (Constants.type == Constants.BCS_15) {
+                    intent = new Intent(MainActivity.this, CategoryActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                } else if (Constants.type == Constants.BCS_22) {
+                    intent = new Intent(MainActivity.this, MemberListActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
                 break;
             case R.id.btn_logout:
                 Constants.logOut(MainActivity.this);

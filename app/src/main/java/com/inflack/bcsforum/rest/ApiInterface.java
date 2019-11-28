@@ -32,6 +32,9 @@ public interface ApiInterface {
     @GET("api/profiles")
     Call<List<MemberDTO>> getMembers(@Query("category_id") int categoryId);
 
+    @GET("api/contacts")
+    Call<List<MemberDTO>> getMembers();
+
     @GET("api/categories")
     Call<List<CategoryDTO>> getCategories();
 

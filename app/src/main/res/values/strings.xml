@@ -16,11 +16,18 @@
     <string name="left_menu_forum_committee">ফোরাম কমিটির তালিকা</string>
     <string name="left_menu_forum_structure">ফোরামের গঠনতন্ত্র</string>
 
-    <string name="president_name">মনিরুল ইসলাম</string>
-    <string name="president_designation1">বিপিএম (বার), পিপিএম (বার)</string>
-    <string name="president_designation2">অতিরিক্ত পুলিশ কমিশনার</string>
-    <string name="president_designation3">কাউন্টার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট\nডিএমপি, ঢাকা</string>
-    <string name="president_designation4">সভাপতি - ১৫তম বিসিএস ফোরাম</string>
+    <string name="president_name_15">মনিরুল ইসলাম</string>
+    <string name="president_designation1_15">বিপিএম (বার), পিপিএম (বার)</string>
+    <string name="president_designation2_15">অতিরিক্ত পুলিশ কমিশনার</string>
+    <string name="president_designation3_15">কাউন্টার টেররিজম এন্ড ট্রান্সন্যাশনাল ক্রাইম ইউনিট\nডিএমপি, ঢাকা</string>
+    <string name="president_designation4_15">সভাপতি - ১৫তম বিসিএস ফোরাম</string>
+
+    <string name="president_name_22">কাজী নিশাত রসুল</string>
+    <string name="president_designation1_22">মাননীয় প্রধানমন্ত্রীর সহকারী একান্ত সচিব (উপ-সচিব)</string>
+    <string name="president_designation2_22">প্রধানমন্ত্রীর কার্যালয়</string>
+    <string name="president_designation3_22">সভাপতি - ২২তম বিসিএস ফোরাম</string>
+
+
     <string name="text_logout">লগ আউট</string>
     <string name="txt_profile_edit">প্রোফাইল এডিট করুন</string>
 
@@ -31,4 +38,16 @@
     <string name="txt_dob">জন্ম তারিখঃ ..............</string>
     <string name="txt_phone_no">মোবাইলঃ ..............</string>
     <string name="txt_email">ইমেইলঃ .............</string>
+    <string name="bcs_22_name">22 তম বিসিএস (এডমিন) ফোরাম</string>
+    <string name="bcs_15_name">১৫ তম বিসিএস ফোরাম</string>
+
+    <string name="proposer_name_22">মোহাম্মদ আব্দুল হাই, পি এ এ</string>
+    <string name="proposer_designation1_22">প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)</string>
+    <string name="proposer_designation2_22">স্কিল ডেভেলপমেন্ট ফর মোবাইল গেইম এন্ড এপ্লিকেশন প্রজেক্ট</string>
+
+    <string name="proposer_name_15">ব্যারিস্টার মোঃ গোলাম সরওয়ার ভুঁইয়া</string>
+    <string name="proposer_designation1_15">প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)</string>
+    <string name="proposer_designation2_15">হাই-টেক পার্কের জন্য মৌলিক অবকাঠামো (সিলেট প্রকল্প)</string>
+    <string name="proposer_designation3_15">বাংলাদেশ হাই-টেক পার্ক কর্তৃপক্ষ</string>
+    <string name="proposer_designation4_15">তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ</string>
 </resources>

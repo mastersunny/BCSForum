@@ -13,17 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!--<android.support.design.widget.NavigationView-->
-    <!--android:id="@+id/nav_view"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_gravity="start"-->
-    <!--android:fitsSystemWindows="true"-->
-    <!--android:visibility="gone"-->
-    <!--app:headerLayout="@layout/nav_header_main"-->
-    <!--app:menu="@menu/activity_main_drawer" />-->
-
-
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -75,7 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/left_menu_cadre_division"
+                    android:text="@string/left_menu_cadre"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
@@ -219,40 +208,37 @@
                         android:textSize="10sp" />
 
                     <TextView
-                        android:id="@+id/tv_name"
+                        android:id="@+id/proposer_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ব্যারিস্টার মোঃ গোলাম সরওয়ার ভুঁইয়া"
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/tv_post"
+                        android:id="@+id/proposer_designation_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="প্রকল্প পরিচালক (ডেপুটি সেক্রেটারি)"
                         android:textColor="@android:color/black"
                         android:textSize="10sp" />
 
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/proposer_designation_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="হাই-টেক পার্কের জন্য মৌলিক অবকাঠামো (সিলেট প্রকল্প)"
                         android:textColor="@android:color/black"
                         android:textSize="10sp" />
 
                     <TextView
+                        android:id="@+id/proposer_designation_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="বাংলাদেশ হাই-টেক পার্ক কর্তৃপক্ষ"
                         android:textColor="@android:color/black"
                         android:textSize="10sp" />
 
                     <TextView
+                        android:id="@+id/proposer_designation_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ"
                         android:textColor="@android:color/black"
                         android:textSize="10sp" />
 

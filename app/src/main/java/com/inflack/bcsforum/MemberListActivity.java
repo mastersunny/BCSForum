@@ -79,32 +79,58 @@ public class MemberListActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         memberDTOS.clear();
         memberDTOSCopy.clear();
-        apiInterface.getMembers(categoryDTO.getCategoryId()).enqueue(new Callback<List<MemberDTO>>() {
-            @Override
-            public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
-                progressBar.setVisibility(View.GONE);
-                Constants.debugLog(TAG, response + "");
-                if (response != null && response.isSuccessful()) {
-                    memberDTOS.addAll(response.body());
-                    memberDTOSCopy.addAll(memberDTOS);
-                    if (memberListAdapter != null) {
-                        memberListAdapter.notifyDataSetChanged();
+        if (categoryDTO != null) {
+            apiInterface.getMembers(categoryDTO.getCategoryId()).enqueue(new Callback<List<MemberDTO>>() {
+                @Override
+                public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
+                    progressBar.setVisibility(View.GONE);
+                    Constants.debugLog(TAG, response + "");
+                    if (response != null && response.isSuccessful()) {
+                        memberDTOS.addAll(response.body());
+                        memberDTOSCopy.addAll(memberDTOS);
+                        if (memberListAdapter != null) {
+                            memberListAdapter.notifyDataSetChanged();
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<MemberDTO>> call, Throwable t) {
-//                Log.d(TAG, t.getMessage());
-                progressBar.setVisibility(View.GONE);
-                Toasty.error(MemberListActivity.this, "Could not fetch data", Toast.LENGTH_SHORT, true).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<MemberDTO>> call, Throwable t) {
+                    progressBar.setVisibility(View.GONE);
+                    Toasty.error(MemberListActivity.this, "Could not fetch data", Toast.LENGTH_SHORT, true).show();
+                }
+            });
+        } else {
+            apiInterface.getMembers().enqueue(new Callback<List<MemberDTO>>() {
+                @Override
+                public void onResponse(Call<List<MemberDTO>> call, Response<List<MemberDTO>> response) {
+                    progressBar.setVisibility(View.GONE);
+                    Constants.debugLog(TAG, response + "");
+                    if (response != null && response.isSuccessful()) {
+                        memberDTOS.addAll(response.body());
+                        memberDTOSCopy.addAll(memberDTOS);
+                        if (memberListAdapter != null) {
+                            memberListAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<MemberDTO>> call, Throwable t) {
+                    progressBar.setVisibility(View.GONE);
+                    Toasty.error(MemberListActivity.this, "Could not fetch data", Toast.LENGTH_SHORT, true).show();
+                }
+            });
+        }
+
     }
 
     private void initLayout() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(categoryDTO.getName());
+        if (categoryDTO != null)
+            getSupportActionBar().setTitle(categoryDTO.getName());
+        else
+            getSupportActionBar().setTitle("সদস্যগনের নামের তালিকা");
         toolbar.setNavigationIcon(R.drawable.ic_arrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
