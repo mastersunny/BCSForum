@@ -15,7 +15,7 @@ public class Constants {
     public static final String MY_PREF = "com.inflack.bcsforum.prefs";
     public static final String LAST_LOGIN_TIME = "last_login_time";
 
-    public static boolean debugOn = true;
+    public static boolean debugOn = false;
     public static int BCS_15 = 1;
     public static int BCS_22 = 2;
     public static int type = BCS_22;

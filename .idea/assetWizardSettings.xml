@@ -51,7 +51,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="60" />
+                                                <entry key="scalingPercent" value="64" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -61,7 +61,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/Screen Shot 2019-06-29 at 5.26.28 PM.png" />
+                                      <entry key="backgroundLayerName" value="ic_launcher_background_22" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/ic_logo.png" />
+                                      <entry key="foregroundLayerName" value="ic_launcher_foreground_22" />
+                                      <entry key="outputName" value="ic_launcher_22" />
                                     </map>
                                   </option>
                                 </PersistentState>
