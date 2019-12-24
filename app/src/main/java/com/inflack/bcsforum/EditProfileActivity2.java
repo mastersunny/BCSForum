@@ -148,11 +148,38 @@ public class EditProfileActivity2 extends AppCompatActivity {
         return true;
     }
 
-    @OnClick({R.id.btn_update})
+    @OnClick({R.id.btn_update, R.id.img_add_phone_no, R.id.img_add_email})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_update:
                 editProfile();
+                break;
+            case R.id.img_add_phone_no:
+                MyDialogFragment.show(EditProfileActivity2.this, true, false, new AddPhoneEmailUpdateListener() {
+                    @Override
+                    public void updatePhoneOrEmail(String phoneNo, String emailAddress) {
+                        if (!TextUtils.isEmpty(phoneNo)) {
+                            edt_phone_no.setText(new StringBuilder()
+                                    .append(edt_phone_no.getText().toString().trim())
+                                    .append(",")
+                                    .append(" ").append(phoneNo));
+                        }
+                    }
+                });
+                break;
+            case R.id.img_add_email:
+                MyDialogFragment.show(EditProfileActivity2.this, false, true, new AddPhoneEmailUpdateListener() {
+                    @Override
+                    public void updatePhoneOrEmail(String phoneNo, String emailAddress) {
+                        if (!TextUtils.isEmpty(emailAddress)) {
+                            edt_email.setText(new StringBuilder()
+                                    .append(edt_email.getText().toString().trim())
+                                    .append(",")
+                                    .append(" ")
+                                    .append(emailAddress));
+                        }
+                    }
+                });
                 break;
         }
     }
