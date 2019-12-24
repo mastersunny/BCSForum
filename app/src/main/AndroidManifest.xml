@@ -57,7 +57,7 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MemberListActivity" />
-        <activity android:name=".MemberProfileActivity" />
+        <activity android:name=".MemberDetailsActivity" />
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="adjustResize" />

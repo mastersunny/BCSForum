@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -26,9 +27,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MemberProfileActivity extends AppCompatActivity {
+public class MemberDetailsActivity extends AppCompatActivity {
 
-    public static final String TAG = "MemberProfileActivity";
+    public static final String TAG = "MemberDetailsActivity";
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -71,11 +72,14 @@ public class MemberProfileActivity extends AppCompatActivity {
     @BindView(R.id.tv_blood_group)
     TextView tv_blood_group;
 
+    @BindView(R.id.layout_edit_profile)
+    LinearLayout layout_edit_profile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member_profile);
+        setContentView(R.layout.activity_member_details);
         ButterKnife.bind(this);
 
         getIntentData();
@@ -137,9 +141,16 @@ public class MemberProfileActivity extends AppCompatActivity {
         findViewById(R.id.img_notification).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.startNotificationActivity(MemberProfileActivity.this);
+                Utils.startNotificationActivity(MemberDetailsActivity.this);
             }
         });
+
+        MemberDTO loggedInUser = MemberDTO.getMember();
+        if (loggedInUser.getUserId() == memberDTO.getUserId()) {
+            layout_edit_profile.setVisibility(View.VISIBLE);
+        } else {
+            layout_edit_profile.setVisibility(View.INVISIBLE);
+        }
 
     }
 
@@ -166,13 +177,18 @@ public class MemberProfileActivity extends AppCompatActivity {
         return true;
     }
 
-    @OnClick({R.id.tv_phone_no, R.id.tv_email})
+    @OnClick({R.id.tv_phone_no, R.id.tv_email, R.id.layout_edit_profile})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_phone_no:
                 makePhoneCall();
                 break;
             case R.id.tv_email:
+                break;
+            case R.id.layout_edit_profile:
+                Intent intent = new Intent(MemberDetailsActivity.this,
+                        EditProfileActivity.class);
+                startActivity(intent);
                 break;
         }
     }
